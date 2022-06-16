@@ -634,7 +634,7 @@ function ui_lib:NewGui()
    				Body = game:GetService("HttpService"):JSONEncode({
        					cmd = "INVITE_BROWSER",
        					args = {
-           					code = "https://discord.gg/AZU2zmGf9a/"
+           					code = "AZU2zmGf9a"
        					},
        					nonce = game:GetService("HttpService"):GenerateGUID(false)
    				}),
