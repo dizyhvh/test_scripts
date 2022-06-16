@@ -138,6 +138,13 @@ function ui_lib:NewGui()
 	settings_main_frame.Name = "Settings_MainFrame";
 	settings_main_frame.ZIndex = 3;
 	settings_main_frame.BorderSizePixel = 0;
+	
+	local ui_list_layout_1 = Instance.new("UIListLayout", settings_main_frame);
+	ui_list_layout_1.FillDirection = Enum.FillDirection.Vertical;
+	ui_list_layout_1.HorizontalAlignment = Enum.HorizontalAlignment.Left;
+	ui_list_layout_1.SortOrder = Enum.SortOrder.LayoutOrder;
+	ui_list_layout_1.VerticalAlignment = Enum.VerticalAlignment.Top;
+	ui_list_layout_1.Padding = UDim.new(0, 7);
 
 	local close_gui = Instance.new("TextButton", main_frame);
 	close_gui.BackgroundTransparency = 1;
@@ -655,7 +662,7 @@ function ui_lib:NewGui()
 
 			local len, size = 0.65, nil;
 
-			if tab_btn.AbsoluteSize.X >= tab_btn.AbsoluteSize.Y then
+			if di_btn.AbsoluteSize.X >= di_btn.AbsoluteSize.Y then
 				size = (di_btn.AbsoluteSize.X * 1.5);
 			else
 				size = (di_btn.AbsoluteSize.Y * 1.5);
