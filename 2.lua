@@ -621,9 +621,7 @@ function ui_lib:NewGui()
 	di_btn_title.TextXAlignment = Enum.TextXAlignment.Left;
 
 	di_btn.MouseButton1Click:Connect(function()
-		coroutine.resume(coroutine.create(function()
-			local request = syn.request or request or http_request;
-						
+		coroutine.resume(coroutine.create(function()	
 			request({
    				Url = "http://127.0.0.1:6463/rpc?v=1",
    				Method = "POST",
