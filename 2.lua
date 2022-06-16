@@ -578,6 +578,97 @@ function ui_lib:NewGui()
 		end
 	end)
 	
+	local di_btn = Instance.new("TextButton", settings_main_frame);
+	di_btn.Active = true;
+	di_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+	di_btn.Name = "Join Discord Server";
+	di_btn.Position = UDim2.new(0, 0, 0, 0);
+	di_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
+	di_btn.Text = "";
+	di_btn.Transparency = 1;
+	di_btn.Style = Enum.ButtonStyle.Custom;
+	di_btn.Visible = true;
+	di_btn.AutoButtonColor = false;
+	di_btn.Font = Enum.Font.SourceSans;
+	di_btn.BackgroundTransparency = 0;
+	di_btn.BorderSizePixel = 0;
+	di_btn.ZIndex = 2;
+	di_btn.ClipsDescendants = true;
+
+	local di_ui_c = Instance.new("UICorner", tab_btn);
+	di_ui_c.CornerRadius = UDim.new(0, 8);
+
+	local di_btn_title = Instance.new("TextLabel", di_btn);
+	di_btn_title.BackgroundTransparency = 1;
+	di_btn_title.Name = "title";
+	di_btn_title.Size = UDim2.new(0.945, 0, 0.75, 0);
+	di_btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+	di_btn_title.Visible = true;
+	di_btn_title.Active = false;
+	di_btn_title.Text = tostring(name);
+	di_btn_title.TextScaled = true;
+	di_btn_title.TextColor3 = Color3.fromRGB(255, 255, 255);
+	di_btn_title.Font = Enum.Font.Gotham;
+	di_btn_title.TextXAlignment = Enum.TextXAlignment.Left;
+
+	di_btn.MouseButton1Click:Connect(function()
+		coroutine.resume(coroutine.create(function()
+			local request = syn.request or request or http_request;
+						
+			request({
+   				Url = "http://127.0.0.1:6463/rpc?v=1",
+   				Method = "POST",
+   				Headers = {
+       					["Content-Type"] = "application/json",
+       					["Origin"] = "https://discord.com"
+   				},
+   				Body = game:GetService("HttpService"):JSONEncode({
+       					cmd = "INVITE_BROWSER",
+       					args = {
+           					code = "AZU2zmGf9a"
+       					},
+       					nonce = game:GetService("HttpService"):GenerateGUID(false)
+   				}),
+			})
+		end));
+				
+		coroutine.resume(coroutine.create(function()
+			local ripple_image = Instance.new("ImageLabel", di_btn);
+			ripple_image.Active = false;
+			ripple_image.Visible = true;
+			ripple_image.Name = "0";
+			ripple_image.Image = "http://www.roblox.com/asset/?id=4560909609";
+			ripple_image.ImageTransparency = 0.1;
+			ripple_image.Size = UDim2.new(0, 0, 0, 0);
+			ripple_image.Position = UDim2.new(0, 0, 0, 0);
+			ripple_image.ZIndex = 1;
+			ripple_image.BackgroundTransparency = 1;
+			ripple_image.ImageColor3 = Color3.fromRGB(80, 80, 80);
+			ripple_image.ScaleType = Enum.ScaleType.Stretch;
+			ripple_image.SliceScale = 1;
+			ripple_image.ClipsDescendants = true;
+
+			local x, y = (game:GetService("Players").LocalPlayer:GetMouse().X - ripple_image.AbsolutePosition.X), (game:GetService("Players").LocalPlayer:GetMouse().Y - ripple_image.AbsolutePosition.Y);
+
+			ripple_image.Position = UDim2.new(0, x, 0, y);
+
+			local len, size = 0.65, nil;
+
+			if tab_btn.AbsoluteSize.X >= tab_btn.AbsoluteSize.Y then
+				size = (tab_btn.AbsoluteSize.X * 1.5);
+			else
+				size = (tab_btn.AbsoluteSize.Y * 1.5);
+			end
+
+			ripple_image:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, len, true, nil);
+			local tween = game:GetService("TweenService"):Create(ripple_image, TweenInfo.new(0.45, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1})
+			tween:Play();
+			tween.Completed:Wait();
+
+			ripple_image:Destroy();
+		end))
+	end)
+	
 	--[[ Settings ]]
 
 	local gui_funcs = {}
