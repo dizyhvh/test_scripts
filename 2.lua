@@ -238,7 +238,7 @@ function ui_lib:NewGui()
 										dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 										dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
 										dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
-										dr_cs1:FindFirstChild("dropdown_btn").ZIndex = 1;
+										dr_cs1.ZIndex = 1;
 									elseif dr_cs1:FindFirstChild("keybind_settings") ~= nil and dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings") ~= nil and dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible == true then
 										dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.new(0, 0, 0, 0);
 										dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.new(1.5, 0, -0.6, 0);
@@ -595,8 +595,8 @@ function ui_lib:NewGui()
 	di_btn.ZIndex = 2;
 	di_btn.ClipsDescendants = true;
 
-	local di_ui_c = Instance.new("UICorner", tab_btn);
-	di_ui_c.CornerRadius = UDim.new(0, 8);
+	local ui_c_3 = Instance.new("UICorner", tab_btn);
+	ui_c_3.CornerRadius = UDim.new(0, 8);
 
 	local di_btn_title = Instance.new("TextLabel", di_btn);
 	di_btn_title.BackgroundTransparency = 1;
@@ -655,9 +655,9 @@ function ui_lib:NewGui()
 			local len, size = 0.65, nil;
 
 			if tab_btn.AbsoluteSize.X >= tab_btn.AbsoluteSize.Y then
-				size = (tab_btn.AbsoluteSize.X * 1.5);
+				size = (di_btn.AbsoluteSize.X * 1.5);
 			else
-				size = (tab_btn.AbsoluteSize.Y * 1.5);
+				size = (di_btn.AbsoluteSize.Y * 1.5);
 			end
 
 			ripple_image:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, len, true, nil);
