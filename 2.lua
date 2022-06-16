@@ -20,10 +20,11 @@ function ui_lib:NewGui()
 		local numbers = "0123456789";
 		local symbols = "!@#$%&()*+-,./\:;<=>?^[]{}";
 		local char_set = upper_case..lower_case..numbers..symbols;
+		local generated = "";
 
 		for i = 1, length do
-			local rand = math.random(#characterSet)
-			generated = generated .. string.sub(characterSet, rand, rand)
+			local rand = math.random(#char_set)
+			generated = generated .. string.sub(char_set, rand, rand)
 		
 			for i=1,math.random(1, 2) do
 				local rand_char = math.random(1, length);
@@ -134,7 +135,7 @@ function ui_lib:NewGui()
 	settings_main_frame.MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png";
 	settings_main_frame.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png";
 	settings_main_frame.BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
-	settings_main_frame.Name = "Main";
+	settings_main_frame.Name = "Settings_MainFrame";
 	settings_main_frame.ZIndex = 3;
 	settings_main_frame.BorderSizePixel = 0;
 
@@ -581,7 +582,7 @@ function ui_lib:NewGui()
 	local di_btn = Instance.new("TextButton", settings_main_frame);
 	di_btn.Active = true;
 	di_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
-	di_btn.Name = "Join Discord Server";
+	di_btn.Name = "JoinDS";
 	di_btn.Position = UDim2.new(0, 0, 0, 0);
 	di_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
 	di_btn.Text = "";
@@ -595,7 +596,7 @@ function ui_lib:NewGui()
 	di_btn.ZIndex = 2;
 	di_btn.ClipsDescendants = true;
 
-	local ui_c_3 = Instance.new("UICorner", tab_btn);
+	local ui_c_3 = Instance.new("UICorner", di_btn);
 	ui_c_3.CornerRadius = UDim.new(0, 8);
 
 	local di_btn_title = Instance.new("TextLabel", di_btn);
@@ -605,7 +606,7 @@ function ui_lib:NewGui()
 	di_btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
 	di_btn_title.Visible = true;
 	di_btn_title.Active = false;
-	di_btn_title.Text = tostring(name);
+	di_btn_title.Text = "Join Discord Server";
 	di_btn_title.TextScaled = true;
 	di_btn_title.TextColor3 = Color3.fromRGB(255, 255, 255);
 	di_btn_title.Font = Enum.Font.Gotham;
