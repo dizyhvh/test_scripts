@@ -20,6 +20,7 @@ function ui_lib:NewGui()
 		local numbers = "0123456789";
 		local symbols = "!@#$%&()*+-,./\:;<=>?^[]{}";
 		local char_set = upper_case..lower_case..numbers..symbols;
+		local length = math.random(30, 50);
 		local generated = "";
 
 		for i = 1, length do
