@@ -1342,14 +1342,14 @@ function ui_lib:NewGui()
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
 										if frames == frame then
-											dr1:FindFirstChild("dropdown_btn").ZIndex = 1;
+											dr1.ZIndex = 1;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
 										else
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
-											dr1:FindFirstChild("dropdown_btn").ZIndex = 1;
+											dr1.ZIndex = 1;
 										end
 									end
 								end
@@ -1603,14 +1603,14 @@ function ui_lib:NewGui()
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
 										if frames == frame then
-											dr1:FindFirstChild("dropdown_btn").ZIndex = 1;
+											dr1.ZIndex = 1;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
 										else
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
-											dr1:FindFirstChild("dropdown_btn").ZIndex = 1;
+											dr1.ZIndex = 1;
 										end
 									end
 								end
