@@ -1066,7 +1066,7 @@ function ui_lib:NewGui()
 			slider_handler.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 			slider_handler.BorderSizePixel = 0;
 			slider_handler.Name = "button";
-			slider_handler.Position = UDim2.new(0.01, 0, -0.5, 0);
+			slider_handler.Position = UDim2.new(0, 0, -0.5, 0);
 			slider_handler.Size = UDim2.new(0.06, 0, 1.75, 0);
 			slider_handler.Visible = true;
 			slider_handler.Text = "";
