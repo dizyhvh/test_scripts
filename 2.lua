@@ -1000,6 +1000,7 @@ function ui_lib:NewGui()
 		
 		frame.Changed:Connect(function()
 		    local canvas_size = (((#frame:GetChildren() - 1) / 10) > 1 and ((#frame:GetChildren() - 1) / 10) or 1);
+		    canvas_size += 1;
     		    frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 
 		    local hardcoded_elSize = 0.0945;
