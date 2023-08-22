@@ -60,7 +60,7 @@ function ui_lib:NewGui()
 
 	local tabs_frame = Instance.new("ImageLabel");
 	tabs_frame.Active = false;
-	tabs_frame.BackgroundTransparency = 0.999;
+	tabs_frame.BackgroundTransparency = 1;
 	tabs_frame.BorderSizePixel = 0;
 	tabs_frame.Size = UDim2.new(0.23, 0, 0.998, 0);
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
