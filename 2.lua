@@ -744,7 +744,24 @@ function ui_lib:NewGui()
 		btn.Parent = tabs_main_frame;
 
 		local ui_stroke = Instance.new("UIStroke");
-		
+		ui_stroke.Color = Color3.fromRGB(150, 150, 150);
+		ui_stroke.LineJoinMode = Enum.LineJoinMode.Round;
+		ui_stroke.Thickness = 5;
+		ui_stroke.Transparency = 0;
+		ui_stroke.Parent = btn;
+
+		local ui_gradient = Instance.new("UIGradient");
+		ui_gradient.Color = Color3.fromRGB(255, 255, 255);
+		ui_gradient.Rotation = 0;
+		ui_gradient.Transparency = NumberSequence.new{
+			NumberSequenceKeypoint.new(0, 0.9),
+			NumberSequenceKeypoint.new(0.1, 0.35),
+			NumberSequenceKeypoint.new(0.2, 0.2),
+			NumberSequenceKeypoint.new(0.8, 0.2),
+			NumberSequenceKeypoint.new(0.9, 0.35),
+			NumberSequenceKeypoint.new(1, 0.9),
+		};
+		ui_gradient.Parent = ui_stroke;
 
 		local ui_c = Instance.new("UICorner");
 		ui_c.CornerRadius = UDim.new(0, 8);
