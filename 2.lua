@@ -36,7 +36,7 @@ function ui_lib:NewGui()
 	local main_frame = Instance.new("Frame");
 	main_frame.Active = true;
 	main_frame.BackgroundTransparency = 0;
-	main_frame.BackgroundColor3 = Color3.fromRGB(21, 21, 21);
+	main_frame.BackgroundColor3 = Color3.fromRGB(24, 24, 24);
 	main_frame.BorderSizePixel = 0;
 	main_frame.Draggable = true;
 	main_frame.ZIndex = 4;
@@ -746,12 +746,13 @@ function ui_lib:NewGui()
 		local ui_stroke = Instance.new("UIStroke");
 		ui_stroke.Color = Color3.fromRGB(150, 150, 150);
 		ui_stroke.LineJoinMode = Enum.LineJoinMode.Round;
-		ui_stroke.Thickness = 5;
+		ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+		ui_stroke.Thickness = 2;
 		ui_stroke.Transparency = 0;
 		ui_stroke.Parent = btn;
 
 		local ui_gradient = Instance.new("UIGradient");
-		ui_gradient.Color = Color3.fromRGB(255, 255, 255);
+		ui_gradient.Color = ColorSequence.new{};
 		ui_gradient.Rotation = 0;
 		ui_gradient.Transparency = NumberSequence.new{
 			NumberSequenceKeypoint.new(0, 0.9),
