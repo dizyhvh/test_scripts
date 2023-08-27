@@ -175,7 +175,7 @@ function ui_lib:NewGui()
 	close_gui.Text = "X";
 	close_gui.TextColor3 = Color3.fromRGB(255, 255, 255);
 	close_gui.TextSize = 11;
-	close_gui.TextStrokeTransparency = 1;TweenInfo.new(0.35
+	close_gui.TextStrokeTransparency = 1;
 	close_gui.Size = UDim2.new(0.036, 0, 0.06, 0);
 	close_gui.Position = UDim2.new(0.955, 0, 0.015, 0);
 	close_gui.TextScaled = true;
