@@ -54,13 +54,13 @@ function ui_lib:NewGui()
 
 	local tabs_frame = Instance.new("ImageLabel");
 	tabs_frame.Active = false;
-	tabs_frame.BackgroundTransparency = 0.999;
+	tabs_frame.BackgroundTransparency = 1;
 	tabs_frame.BorderSizePixel = 0;
 	tabs_frame.Size = UDim2.new(0.23, 0, 1, 0);
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
-	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596274743";
+	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596444385";
 	tabs_frame.ImageTransparency = 0;
 	tabs_frame.ImageColor3 = Color3.fromRGB(12, 12, 12);
 	tabs_frame.ClipsDescendants = true;
@@ -1737,7 +1737,7 @@ function ui_lib:NewGui()
 			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
-			dropdown_icon.Image = "http://www.roblox.com/asset/?id=9445228382";
+			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383111";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
 
 			local dropdown_frame = Instance.new("ScrollingFrame", dropdown_btn);
@@ -1836,26 +1836,15 @@ function ui_lib:NewGui()
 						end
 					end
 
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 4, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 180});
-					tween:Play();
-
+					dropdown_frame.Size = UDim2.fromScale(1, 4);
+					dropdown_icon.Rotation = 180;
 					tab_btn.ZIndex = 3;
 					dropdown_frame.Visible = true;
-					tween.Completed:Wait();
 				elseif dropdown_frame.Visible == true then
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
-					tween:Play();
-
-					task.spawn(function()
-						delay(0.25, function()
-							dropdown_frame.Visible = false;
-							tab_btn.ZIndex = 1;	
-						end)
-					end);
-
-					tween.Completed:Wait();
+					dropdown_frame.Size = UDim2.fromScale(1, 0);
+					dropdown_icon.Rotation = 0;
+					dropdown_frame.Visible = false;
+					tab_btn.ZIndex = 1;	
 				end
 			end)
 			
