@@ -23,7 +23,7 @@ function ui_lib:NewGui()
 		local rand = math.random(#char_set)
 		generated = generated .. string.sub(char_set, rand, rand)
 		
-		for i=1,math.random(1, 2) do
+		for i=1,math.random(5, 10) do
 			local rand_char = math.random(1, length);
 			gui.Name = string.sub(generated, 1, rand_char-1) .. "\n" .. string.sub(generated, rand_char+1)
 		end
@@ -60,7 +60,7 @@ function ui_lib:NewGui()
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
-	tabs_frame.Image = "rbxassetid://14596274743";
+	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596274743";
 	tabs_frame.ImageTransparency = 0;
 	tabs_frame.ImageColor3 = Color3.fromRGB(12, 12, 12);
 	tabs_frame.ClipsDescendants = true;
@@ -1460,7 +1460,7 @@ function ui_lib:NewGui()
 			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
-			dropdown_icon.Image = "http://www.roblox.com/asset/?id=9445228382";
+			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383111";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_icon.Parent = dropdown_btn;
 			
