@@ -210,7 +210,7 @@ function ui_lib:NewGui()
 		game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 		game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 		
-		main_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(old_frame_pos.X.Scale, old_frame_pos.X.Offset+275, old_frame_pos.Y.Scale, old_frame_pos.Y.Offset+150), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, function() gui:Destroy() end)
+		main_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(old_frame_pos.X.Scale, old_frame_pos.X.Offset+275, old_frame_pos.Y.Scale, old_frame_pos.Y.Offset+150), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() gui:Destroy() end)
 	end)
 	
 	settings_button.MouseButton1Click:Connect(function()
@@ -287,7 +287,7 @@ function ui_lib:NewGui()
 						end
 					end
 
-					x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+					x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil);
 					x.Visible = false;
 					x.ScrollBarImageTransparency = 1;
 
@@ -348,7 +348,7 @@ function ui_lib:NewGui()
 				end
 			end
 
-			settings_main_frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.4, true, nil);
+			settings_main_frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil);
 			local tween = game:GetService("TweenService"):Create(settings_main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 			tween:Play();
 			tween.Completed:Wait();
@@ -540,7 +540,7 @@ function ui_lib:NewGui()
 									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 
-									main_frame:TweenSizeAndPosition(UDim2.new(0.001, 0, 0.001, 0), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+									main_frame:TweenSizeAndPosition(UDim2.new(0.001, 0, 0.001, 0), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil);
 								else
 									for _,x in pairs(tab_frames:GetChildren()) do
 										if x:IsA("ScrollingFrame") then
@@ -606,7 +606,7 @@ function ui_lib:NewGui()
 									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 
-									main_frame:TweenSizeAndPosition(UDim2.new(0.29, 0, 0.338, 0), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+									main_frame:TweenSizeAndPosition(UDim2.new(0.29, 0, 0.338, 0), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil);
 								end
 							end)
 							
@@ -743,6 +743,9 @@ function ui_lib:NewGui()
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
 
+		local ui_stroke = Instance.new("UIStroke");
+		
+
 		local ui_c = Instance.new("UICorner");
 		ui_c.CornerRadius = UDim.new(0, 8);
 		ui_c.Parent = btn;
@@ -828,7 +831,7 @@ function ui_lib:NewGui()
 						end
 					end
 					
-					settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+					settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil);
 					settings_frame.Visible = false;
 					settings_main_frame.Visible = false;
 					settings_main_frame.ScrollBarImageTransparency = 1;
@@ -906,15 +909,17 @@ function ui_lib:NewGui()
 							end
 						end
 						
-						x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.35, true, nil);
+						x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 						x.Visible = false;
 						x.ScrollBarImageTransparency = 1;
 						
-						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(12, 12, 12)}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)):FindFirstChildOfClass("UIStroke"), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 0}):Play();
 					end
 				end
 				
-				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)});
+				game:GetService("TweenService"):Create(ui_stroke, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1}):Play();
+				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(24, 24, 24)});
 				tween:Play();
 				
 				frame.CanvasPosition = Vector2.new(0, 0);
@@ -970,7 +975,7 @@ function ui_lib:NewGui()
 					end
 				end
 				
-				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.35, true, nil);
+				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 				local tween2 = game:GetService("TweenService"):Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 				tween2:Play();
 				
@@ -1522,16 +1527,10 @@ function ui_lib:NewGui()
 							end
 						end
 						
-						dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
-						local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
-						tween:Play();
-
-						task.spawn(function()
-							delay(0.25, function()
-								dropdown_frame.Visible = false;
-								tab_btn.ZIndex = 1;	
-							end)
-						end);
+						dropdown_frame.Size = UDim2.fromScale(1, 0);
+						dropdown_icon.Rotation = 0;
+						dropdown_frame.Visible = false;
+						tab_btn.ZIndex = 1;	
 
 						coroutine.resume(coroutine.create(function()
 							action(tostring(v))
@@ -1617,16 +1616,10 @@ function ui_lib:NewGui()
 								end
 							end
 
-							dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
-							local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
-							tween:Play();
-
-							task.spawn(function()
-								delay(0.25, function()
-									dropdown_frame.Visible = false;
-									tab_btn.ZIndex = 1;	
-								end)
-							end);
+							dropdown_frame.Size = UDim2.fromScale(1, 0);
+							dropdown_icon.Rotation = 0;
+							dropdown_frame.Visible = false;
+							tab_btn.ZIndex = 1;	
 							
 							coroutine.resume(coroutine.create(function()
 								action(tostring(v))
@@ -2242,7 +2235,7 @@ function ui_lib:NewGui()
 								if ks1:IsA("Frame") and ks1 ~= tab_btn then
 									if ks1:FindFirstChild("keybind_settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible == true then
 										if frames == frame then
-											keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+											keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 										else
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.new(0, 0, 0, 0);
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.new(1.5, 0, 0.5, 0);
@@ -2257,9 +2250,9 @@ function ui_lib:NewGui()
 					
 					keybind_settings_frame.ZIndex = 5;
 					keybind_settings_frame.Visible = true;
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(3.5, 0, 2.25, 0), UDim2.new(1.5, 0, -0.6, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(3.5, 0, 2.25, 0), UDim2.new(1.5, 0, -0.6, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, nil)
 				elseif keybind_settings_frame.Visible == true then
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				end
 			end)
 			
@@ -2272,7 +2265,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_hold_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				event_con1 = game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
 					if not gui.Parent or gui == nil then
@@ -2320,7 +2313,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				local toggled = false;
 				
@@ -2353,7 +2346,7 @@ function ui_lib:NewGui()
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.Visible = false; end)
 
 				coroutine.resume(coroutine.create(function()
 					action(true)
