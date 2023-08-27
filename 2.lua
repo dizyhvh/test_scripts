@@ -60,9 +60,8 @@ function ui_lib:NewGui()
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
-	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596444385";
+	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596444361";
 	tabs_frame.ImageTransparency = 0;
-	tabs_frame.ImageColor3 = Color3.fromRGB(12, 12, 12);
 	tabs_frame.ClipsDescendants = true;
 	tabs_frame.Parent = main_frame;
 
@@ -1127,7 +1126,7 @@ function ui_lib:NewGui()
 			untoggled_image.Position = UDim2.new(0.02, 0, 0.15, 0);
 			untoggled_image.Size = UDim2.new(0.0505, 0, 0.7, 0);
 			untoggled_image.Visible = true;
-			untoggled_image.Image = "rbxassetid://14596065807";
+			untoggled_image.Image = "http://www.roblox.com/asset/?id=14596065772";
 			untoggled_image.ImageTransparency = 0;
 			untoggled_image.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			untoggled_image.Name = "untoggled";
@@ -1460,7 +1459,7 @@ function ui_lib:NewGui()
 			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
-			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383111";
+			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383084";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_icon.Parent = dropdown_btn;
 			
@@ -1698,7 +1697,7 @@ function ui_lib:NewGui()
 			btn_title.TextXAlignment = Enum.TextXAlignment.Left;
 			btn_title.Parent = tab_btn;
 
-			local dropdown_btn = Instance.new("TextButton", tab_btn);
+			local dropdown_btn = Instance.new("TextButton");
 			dropdown_btn.Active = true;
 			dropdown_btn.AutoButtonColor = false;
 			dropdown_btn.BackgroundTransparency = 0;
@@ -1713,8 +1712,9 @@ function ui_lib:NewGui()
 			dropdown_btn.TextTransparency = 1;
 			dropdown_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_btn.Font = Enum.Font.Gotham;
+			dropdown_btn.Parent = tab_btn
 			
-			local dropdown_text = Instance.new("TextLabel", dropdown_btn);
+			local dropdown_text = Instance.new("TextLabel");
 			dropdown_text.Active = false;
 			dropdown_text.BackgroundTransparency = 1;
 			dropdown_text.Name = "dropdown_text";
@@ -1728,8 +1728,9 @@ function ui_lib:NewGui()
 			dropdown_text.TextColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_text.TextXAlignment = Enum.TextXAlignment.Left;
 			dropdown_text.TextScaled = true;
+			dropdown_text.Parent = dropdown_btn;
 			
-			local dropdown_icon = Instance.new("ImageLabel", dropdown_btn);
+			local dropdown_icon = Instance.new("ImageLabel");
 			dropdown_icon.Active = false;
 			dropdown_icon.BackgroundTransparency = 1;
 			dropdown_icon.Name = "dropdown_icon";
@@ -1737,10 +1738,11 @@ function ui_lib:NewGui()
 			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
-			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383111";
+			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383084";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
+			dropdown_icon.Parent = dropdown_btn;
 
-			local dropdown_frame = Instance.new("ScrollingFrame", dropdown_btn);
+			local dropdown_frame = Instance.new("ScrollingFrame");
 			dropdown_frame.BackgroundColor3 = Color3.fromRGB(44, 44, 44);
 			dropdown_frame.BorderSizePixel = 0;
 			dropdown_frame.BackgroundTransparency = 0;
@@ -1753,6 +1755,7 @@ function ui_lib:NewGui()
 			dropdown_frame.Name = "Dropdown";
 			dropdown_frame.ZIndex = 1;
 			dropdown_frame.CanvasSize = UDim2.new(0, 0, 10, 0);
+			dropdown_frame.Parent = dropdown_btn;
 
 			local ui_list_layout = Instance.new("UIListLayout");
 			ui_list_layout.FillDirection = Enum.FillDirection.Vertical;
@@ -1820,16 +1823,10 @@ function ui_lib:NewGui()
 							for _,dr1 in pairs(frames:GetChildren()) do
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
-										if frames == frame then
-											dr1.ZIndex = 1;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
-										else
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
-											dr1.ZIndex = 1;
-										end
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
+										dr1.ZIndex = 1;
 									end
 								end
 							end
