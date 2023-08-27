@@ -60,8 +60,9 @@ function ui_lib:NewGui()
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
-	tabs_frame.Image = "http://www.roblox.com/asset/?id=12653426837";
+	tabs_frame.Image = "rbxassetid://14596274743";
 	tabs_frame.ImageTransparency = 0;
+	tabs_frame.ImageColor3 = Color3.fromRGB(12, 12, 12);
 	tabs_frame.ClipsDescendants = true;
 	tabs_frame.Parent = main_frame;
 
@@ -130,7 +131,7 @@ function ui_lib:NewGui()
 	
 	local settings_frame = Instance.new("Frame");
 	settings_frame.Size = UDim2.new(0.759, 0, 0.9, 0);
-	settings_frame.Position = UDim2.new(0.241, 0, 0.1, 0);
+	settings_frame.Position = UDim2.new(0.241, 0, 0.09, 0);
 	settings_frame.BackgroundTransparency = 1;
 	settings_frame.ZIndex = 3;
 	settings_frame.Name = "Settings";
@@ -287,7 +288,7 @@ function ui_lib:NewGui()
 						end
 					end
 
-					x:TweenPosition(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+					x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
 					x.Visible = false;
 					x.ScrollBarImageTransparency = 1;
 
@@ -348,7 +349,7 @@ function ui_lib:NewGui()
 				end
 			end
 
-			settings_main_frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+			settings_main_frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.4, true, nil);
 			local tween = game:GetService("TweenService"):Create(settings_main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 			tween:Play();
 			tween.Completed:Wait();
@@ -739,7 +740,7 @@ function ui_lib:NewGui()
 		btn.BorderSizePixel = 0;
 		btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 		btn.TextStrokeTransparency = 1;
-		btn.Size = UDim2.new(0.91, 0, 0.11, 0);
+		btn.Size = UDim2.new(0.88, 0, 0.11, 0);
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
 
@@ -752,7 +753,7 @@ function ui_lib:NewGui()
 		frame.Position = UDim2.new(0, 0, 0.9, 0);
 		frame.Size = UDim2.new(0.99, 0, 0.99, 0);
 		frame.Visible = false;
-		frame.CanvasSize = UDim2.new(0, 0, 1, 0);
+		frame.CanvasSize = UDim2.new(0, 0, 0.9, 0);
 		frame.CanvasPosition = Vector2.new(0, 0);
 		frame.ScrollBarImageColor3 = Color3.fromRGB(56, 56, 56);
 		frame.ScrollBarThickness = 6;
@@ -981,14 +982,14 @@ function ui_lib:NewGui()
 		
 		frame.Changed:Connect(function()
 		    local canvas_size = (((#frame:GetChildren() - 1) / 10) > 1 and ((#frame:GetChildren() - 1) / 10) or 1);
-		    canvas_size += 1;
+		    canvas_size += 0.1;
     		frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 
-		    local hardcoded_elSize = 0.0945;
+		    local element_size = 0.0945;
     
     		for _,element in pairs(frame:GetChildren()) do
     		    if element:IsA("Frame") or element:IsA("ScrollingFrame") or element:IsA("TextButton") then
-			    	element.Size = UDim2.fromScale(element.Size.X.Scale, hardcoded_elSize / canvas_size);
+			    	element.Size = UDim2.fromScale(element.Size.X.Scale, element_size / canvas_size);
     		    end
     		end
 		end)
@@ -1061,7 +1062,6 @@ function ui_lib:NewGui()
 					ripple_image.Parent = tab_btn;
 
 					local x, y = (game:GetService("Players").LocalPlayer:GetMouse().X - ripple_image.AbsolutePosition.X), (game:GetService("Players").LocalPlayer:GetMouse().Y - ripple_image.AbsolutePosition.Y);
-
 					ripple_image.Position = UDim2.new(0, x, 0, y);
 
 					local len, size = 0.65, nil;
@@ -1127,7 +1127,7 @@ function ui_lib:NewGui()
 			untoggled_image.Position = UDim2.new(0.02, 0, 0.15, 0);
 			untoggled_image.Size = UDim2.new(0.0505, 0, 0.7, 0);
 			untoggled_image.Visible = true;
-			untoggled_image.Image = "rbxassetid://1264513374";
+			untoggled_image.Image = "rbxassetid://14596065807";
 			untoggled_image.ImageTransparency = 0;
 			untoggled_image.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			untoggled_image.Name = "untoggled";
@@ -1745,7 +1745,7 @@ function ui_lib:NewGui()
 			dropdown_frame.BorderSizePixel = 0;
 			dropdown_frame.BackgroundTransparency = 0;
 			dropdown_frame.BorderColor3 = Color3.fromRGB(35, 35, 35);
-			dropdown_frame.Position = UDim2.new(0, 0, 1, 0);
+			dropdown_frame.Position = UDim2.new(0, 0, 1.05, 0);
 			dropdown_frame.Size = UDim2.new(1, 0, 0, 0);
 			dropdown_frame.ScrollingDirection = Enum.ScrollingDirection.Y;
 			dropdown_frame.ScrollBarThickness = 5;
