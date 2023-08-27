@@ -56,7 +56,7 @@ function ui_lib:NewGui()
 	tabs_frame.Active = false;
 	tabs_frame.BackgroundTransparency = 0.999;
 	tabs_frame.BorderSizePixel = 0;
-	tabs_frame.Size = UDim2.new(0.23, 0, 0.998, 0);
+	tabs_frame.Size = UDim2.new(0.23, 0, 1, 0);
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
@@ -65,13 +65,17 @@ function ui_lib:NewGui()
 	tabs_frame.ClipsDescendants = true;
 	tabs_frame.Parent = main_frame;
 
-	--[[local ui_stroke = Instance.new("UIStroke");
+	local ui_c = Instance.new("UICorner");
+	ui_c.CornerRadius = UDim.new(0, 8);
+	ui_c.Parent = main_frame;
+
+	local ui_stroke = Instance.new("UIStroke");
 	ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
-	ui_stroke.Color = Color3.fromRGB(56, 56, 56);
+	ui_stroke.Color = Color3.fromRGB(38, 38, 38);
 	ui_stroke.LineJoinMode = Enum.LineJoinMode.Round;
 	ui_stroke.Thickness = 1;
 	ui_stroke.Transparency = 0;
-	ui_stroke.Parent = tabs_frame;]]
+	ui_stroke.Parent = tabs_frame;
 
 	local tabs_main_frame = Instance.new("Frame");
 	tabs_main_frame.BackgroundTransparency = 1;
@@ -117,7 +121,7 @@ function ui_lib:NewGui()
 	settings_button.Active = true;
 	settings_button.BackgroundTransparency = 1;
 	settings_button.Name = "Settings_Button";
-	settings_button.Position = UDim2.new(0.012, 0, 0.015, 0);
+	settings_button.Position = UDim2.new(0.005, 0, 0.015, 0);
 	settings_button.Size = UDim2.new(0.04, 0, 0.07, 0);
 	settings_button.Image = "rbxassetid://1185031129";
 	settings_button.Visible = true;
@@ -199,12 +203,12 @@ function ui_lib:NewGui()
 		
 		for _,tab in pairs(tabs_main_frame:GetChildren()) do
 			if tab:IsA("TextButton") then
-				game:GetService("TweenService"):Create(tab, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+				game:GetService("TweenService"):Create(tab, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 			end
 		end
 		
-		game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-		game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+		game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+		game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 		
 		main_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(old_frame_pos.X.Scale, old_frame_pos.X.Offset+275, old_frame_pos.Y.Scale, old_frame_pos.Y.Offset+150), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, function() gui:Destroy() end)
 	end)
@@ -215,49 +219,49 @@ function ui_lib:NewGui()
 				if x:IsA("ScrollingFrame") and x.Visible == true then
 					for _,obj in pairs(x:GetChildren()) do
 						if obj:IsA("TextButton") then
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 							for _,btn_obj in pairs(obj:GetChildren()) do
 								if btn_obj:IsA("TextLabel") then
-									game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								end
 							end
 						elseif obj:IsA("Frame") then
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 							for _,frame_obj in pairs(obj:GetChildren()) do
 								if frame_obj:IsA("TextLabel") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								elseif frame_obj:IsA("TextButton") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 
 									for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 										if btn_obj2:IsA("Frame") then
-											game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 											for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 												if frame_obj2:IsA("TextButton") then
-													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 												end
 											end
 										end
 									end
 								elseif frame_obj:IsA("ImageButton") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 								elseif frame_obj:IsA("Frame") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 									for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 										if frame_obj3:IsA("TextButton") then
-											game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 										end
 									end
 								elseif frame_obj:IsA("TextBox") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								end
 							end
 						end
@@ -287,7 +291,7 @@ function ui_lib:NewGui()
 					x.Visible = false;
 					x.ScrollBarImageTransparency = 1;
 
-					game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}):Play();
+					game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}):Play();
 				end
 			end
 			
@@ -296,56 +300,56 @@ function ui_lib:NewGui()
 
 			for _,obj in pairs(settings_main_frame:GetChildren()) do
 				if obj:IsA("TextButton") then
-					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
-					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 					for _,btn_obj in pairs(obj:GetChildren()) do
 						if btn_obj:IsA("TextLabel") then
-							game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 						end
 					end
 				elseif obj:IsA("Frame") then
-					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+					game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 					for _,frame_obj in pairs(obj:GetChildren()) do
 						if frame_obj:IsA("TextLabel") then
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 						elseif frame_obj:IsA("TextButton") then
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 
 							for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 								if btn_obj2:IsA("Frame") then
-									game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 									for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 										if frame_obj2:IsA("TextButton") then
-											game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-											game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+											game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+											game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 										end
 									end
 								end
 							end
 						elseif frame_obj:IsA("ImageButton") then
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 						elseif frame_obj:IsA("Frame") then
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 							for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 								if frame_obj3:IsA("TextButton") then
-									game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 								end
 							end
 						elseif frame_obj:IsA("TextBox") then
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+							game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 						end
 					end
 				end
 			end
 
 			settings_main_frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
-			local tween = game:GetService("TweenService"):Create(settings_main_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
+			local tween = game:GetService("TweenService"):Create(settings_main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 			tween:Play();
 			tween.Completed:Wait();
 		end
@@ -363,7 +367,7 @@ function ui_lib:NewGui()
 	local keybind_debounce = false;
 
 	local oc_menu_btn = Instance.new("Frame");
-	oc_menu_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+	oc_menu_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 	oc_menu_btn.Name = "Menu_Keybind";
 	oc_menu_btn.Position = UDim2.new(0, 0, 0, 0);
 	oc_menu_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
@@ -476,49 +480,49 @@ function ui_lib:NewGui()
 										if x:IsA("ScrollingFrame") then
 											for _,obj in pairs(x:GetChildren()) do
 												if obj:IsA("TextButton") then
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 													for _,btn_obj in pairs(obj:GetChildren()) do
 														if btn_obj:IsA("TextLabel") then
-															game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 														end
 													end
 												elseif obj:IsA("Frame") then
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 													for _,frame_obj in pairs(obj:GetChildren()) do
 														if frame_obj:IsA("TextLabel") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 														elseif frame_obj:IsA("TextButton") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 
 															for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 																if btn_obj2:IsA("Frame") then
-																	game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+																	game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 																	for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 																		if frame_obj2:IsA("TextButton") then
-																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 																		end
 																	end
 																end
 															end
 														elseif frame_obj:IsA("ImageButton") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 														elseif frame_obj:IsA("Frame") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 															for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 																if frame_obj3:IsA("TextButton") then
-																	game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+																	game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 																end
 															end
 														elseif frame_obj:IsA("TextBox") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 														end
 													end
 												end
@@ -528,13 +532,13 @@ function ui_lib:NewGui()
 									
 									for _,tab in pairs(tabs_main_frame:GetChildren()) do
 										if tab:IsA("TextButton") then
-											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
-											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 										end
 									end
 
-									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 
 									main_frame:TweenSizeAndPosition(UDim2.new(0.001, 0, 0.001, 0), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
 								else
@@ -542,49 +546,49 @@ function ui_lib:NewGui()
 										if x:IsA("ScrollingFrame") then
 											for _,obj in pairs(x:GetChildren()) do
 												if obj:IsA("TextButton") then
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 													for _,btn_obj in pairs(obj:GetChildren()) do
 														if btn_obj:IsA("TextLabel") then
-															game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 														end
 													end
 												elseif obj:IsA("Frame") then
-													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+													game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 													for _,frame_obj in pairs(obj:GetChildren()) do
 														if frame_obj:IsA("TextLabel") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 														elseif frame_obj:IsA("TextButton") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 
 															for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 																if btn_obj2:IsA("Frame") then
-																	game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+																	game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 																	for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 																		if frame_obj2:IsA("TextButton") then
-																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+																			game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 																		end
 																	end
 																end
 															end
 														elseif frame_obj:IsA("ImageButton") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 														elseif frame_obj:IsA("Frame") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 
 															for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 																if frame_obj3:IsA("TextButton") then
-																	game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+																	game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 																end
 															end
 														elseif frame_obj:IsA("TextBox") then
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+															game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 														end
 													end
 												end
@@ -594,13 +598,13 @@ function ui_lib:NewGui()
 									
 									for _,tab in pairs(tabs_main_frame:GetChildren()) do
 										if tab:IsA("TextButton") then
-											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
-											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+											game:GetService("TweenService"):Create(tab, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 										end
 									end
 
-									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 
 									main_frame:TweenSizeAndPosition(UDim2.new(0.29, 0, 0.338, 0), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
 								end
@@ -620,7 +624,7 @@ function ui_lib:NewGui()
 	
 	local di_btn = Instance.new("TextButton");
 	di_btn.Active = true;
-	di_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+	di_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 	di_btn.Name = "Join_DS";
 	di_btn.Position = UDim2.new(0, 0, 0, 0);
 	di_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
@@ -697,7 +701,6 @@ function ui_lib:NewGui()
 			ripple_image.Parent = di_btn;
 
 			local x, y = (game:GetService("Players").LocalPlayer:GetMouse().X - ripple_image.AbsolutePosition.X), (game:GetService("Players").LocalPlayer:GetMouse().Y - ripple_image.AbsolutePosition.Y);
-
 			ripple_image.Position = UDim2.new(0, x, 0, y);
 
 			local len, size = 0.65, nil;
@@ -709,7 +712,7 @@ function ui_lib:NewGui()
 			end
 
 			ripple_image:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, len, true, nil);
-			local tween = game:GetService("TweenService"):Create(ripple_image, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1})
+			local tween = game:GetService("TweenService"):Create(ripple_image, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1})
 			tween:Play();
 			tween.Completed:Wait();
 
@@ -736,9 +739,13 @@ function ui_lib:NewGui()
 		btn.BorderSizePixel = 0;
 		btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 		btn.TextStrokeTransparency = 1;
-		btn.Size = UDim2.new(0.9, 0, 0.11, 0);
+		btn.Size = UDim2.new(0.91, 0, 0.11, 0);
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
+
+		local ui_c = Instance.new("UICorner");
+		ui_c.CornerRadius = UDim.new(0, 8);
+		ui_c.Parent = btn;
 
 		local frame = Instance.new("ScrollingFrame");
 		frame.BackgroundTransparency = 1;
@@ -773,55 +780,55 @@ function ui_lib:NewGui()
 				if settings_frame.Visible then
 					for _,obj in pairs(settings_main_frame:GetChildren()) do
 						if obj:IsA("TextButton") then
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 							for _,btn_obj in pairs(obj:GetChildren()) do
 								if btn_obj:IsA("TextLabel") then
-									game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								end
 							end
 						elseif obj:IsA("Frame") then
-							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+							game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 							for _,frame_obj in pairs(obj:GetChildren()) do
 								if frame_obj:IsA("TextLabel") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								elseif frame_obj:IsA("TextButton") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 
 									for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 										if btn_obj2:IsA("Frame") then
-											game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 											for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 												if frame_obj2:IsA("TextButton") then
-													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+													game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 												end
 											end
 										end
 									end
 								elseif frame_obj:IsA("ImageButton") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 								elseif frame_obj:IsA("Frame") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 									for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 										if frame_obj3:IsA("TextButton") then
-											game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+											game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 										end
 									end
 								elseif frame_obj:IsA("TextBox") then
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 								end
 							end
 						end
 					end
 					
-					settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
+					settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
 					settings_frame.Visible = false;
 					settings_main_frame.Visible = false;
 					settings_main_frame.ScrollBarImageTransparency = 1;
@@ -831,49 +838,49 @@ function ui_lib:NewGui()
 					if x:IsA("ScrollingFrame") and x ~= frame and x.Visible == true then
 						for _,obj in pairs(x:GetChildren()) do
 							if obj:IsA("TextButton") then
-								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
-								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 								for _,btn_obj in pairs(obj:GetChildren()) do
 									if btn_obj:IsA("TextLabel") then
-										game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 									end
 								end
 							elseif obj:IsA("Frame") then
-								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+								game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 								for _,frame_obj in pairs(obj:GetChildren()) do
 									if frame_obj:IsA("TextLabel") then
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 									elseif frame_obj:IsA("TextButton") then
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 
 										for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 											if btn_obj2:IsA("Frame") then
-												game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+												game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 												for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 													if frame_obj2:IsA("TextButton") then
-														game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-														game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+														game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+														game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 													end
 												end
 											end
 										end
 									elseif frame_obj:IsA("ImageButton") then
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 									elseif frame_obj:IsA("Frame") then
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 
 										for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 											if frame_obj3:IsA("TextButton") then
-												game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+												game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
 											end
 										end
 									elseif frame_obj:IsA("TextBox") then
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+										game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play();
 									end
 								end
 							end
@@ -899,15 +906,15 @@ function ui_lib:NewGui()
 							end
 						end
 						
-						x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.25, true, nil);
+						x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.35, true, nil);
 						x.Visible = false;
 						x.ScrollBarImageTransparency = 1;
 						
-						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}):Play();
 					end
 				end
 				
-				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)});
+				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)});
 				tween:Play();
 				
 				frame.CanvasPosition = Vector2.new(0, 0);
@@ -915,56 +922,56 @@ function ui_lib:NewGui()
 				
 				for _,obj in pairs(frame:GetChildren()) do
 					if obj:IsA("TextButton") then
-						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
-						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 						
 						for _,btn_obj in pairs(obj:GetChildren()) do
 							if btn_obj:IsA("TextLabel") then
-								game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(btn_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 							end
 						end
 					elseif obj:IsA("Frame") then
-						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+						game:GetService("TweenService"):Create(obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 						
 						for _,frame_obj in pairs(obj:GetChildren()) do
 							if frame_obj:IsA("TextLabel") then
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 							elseif frame_obj:IsA("TextButton") then
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 								
 								for _,btn_obj2 in pairs(frame_obj:GetChildren()) do
 									if btn_obj2:IsA("Frame") then
-										game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+										game:GetService("TweenService"):Create(btn_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 										
 										for _,frame_obj2 in pairs(btn_obj2:GetChildren()) do
 											if frame_obj2:IsA("TextButton") then
-												game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-												game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+												game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+												game:GetService("TweenService"):Create(frame_obj2, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 											end
 										end
 									end
 								end
 							elseif frame_obj:IsA("ImageButton") then
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 							elseif frame_obj:IsA("Frame") then
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 								
 								for _,frame_obj3 in pairs(frame_obj:GetChildren()) do
 									if frame_obj3:IsA("TextButton") then
-										game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+										game:GetService("TweenService"):Create(frame_obj3, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
 									end
 								end
 							elseif frame_obj:IsA("TextBox") then
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+								game:GetService("TweenService"):Create(frame_obj, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 0}):Play();
 							end
 						end
 					end
 				end
 				
-				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.25, true, nil);
-				local tween2 = game:GetService("TweenService"):Create(frame, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
+				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.35, true, nil);
+				local tween2 = game:GetService("TweenService"):Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 				tween2:Play();
 				
 				tween.Completed:Wait();
@@ -993,7 +1000,7 @@ function ui_lib:NewGui()
 
 			local tab_btn = Instance.new("TextButton");
 			tab_btn.Active = true;
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -1066,7 +1073,7 @@ function ui_lib:NewGui()
 					end
 
 					ripple_image:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, len, true, nil);
-					local tween = game:GetService("TweenService"):Create(ripple_image, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1})
+					local tween = game:GetService("TweenService"):Create(ripple_image, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1})
 					tween:Play();
 					tween.Completed:Wait();
 
@@ -1081,7 +1088,7 @@ function ui_lib:NewGui()
 			local toggled = false;
 			
 			local tab_btn = Instance.new("Frame");
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -1127,6 +1134,11 @@ function ui_lib:NewGui()
 			untoggled_image.ScaleType = Enum.ScaleType.Stretch;
 			untoggled_image.SliceScale = 1;
 			untoggled_image.Parent = tab_btn;
+
+			local ui_gradient = Instance.new("UIGradient");
+			ui_gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(56, 56, 56)), ColorSequenceKeypoint.new(1, Color3.fromRGB(80, 80, 80))};
+			ui_gradient.Rotation = 90;
+			ui_gradient.Parent = untoggled_image;
 			
 			local toggled_image = Instance.new("ImageButton");
 			toggled_image.Active = true;
@@ -1190,7 +1202,7 @@ function ui_lib:NewGui()
 			local slider_connection = nil;
 			
 			local tab_btn = Instance.new("Frame");
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -1374,7 +1386,7 @@ function ui_lib:NewGui()
 			local all_elements = nil;
 			
 			local tab_btn = Instance.new("Frame");
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -1511,8 +1523,8 @@ function ui_lib:NewGui()
 							end
 						end
 						
-						dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-						local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
+						dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+						local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
 						tween:Play();
 
 						task.spawn(function()
@@ -1541,42 +1553,25 @@ function ui_lib:NewGui()
 							for _,dr1 in pairs(frames:GetChildren()) do
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
-										if frames == frame then
-											dr1.ZIndex = 1;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
-										else
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
-											dr1.ZIndex = 1;
-										end
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
+										dr1.ZIndex = 1;
 									end
 								end
 							end
 						end
 					end
 					
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 4, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 180});
-					tween:Play();
-					
+					dropdown_frame.Size = UDim2.fromScale(1, 4);
+					dropdown_icon.Rotation = 180;
 					tab_btn.ZIndex = 3;
 					dropdown_frame.Visible = true;
-					tween.Completed:Wait();
 				elseif dropdown_frame.Visible == true then
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
-					tween:Play();
-					
-					task.spawn(function()
-						delay(0.25, function()
-							dropdown_frame.Visible = false;
-							tab_btn.ZIndex = 1;	
-						end)
-					end);
-
-					tween.Completed:Wait();
+					dropdown_frame.Size = UDim2.fromScale(1, 0);
+					dropdown_icon.Rotation = 0;
+					dropdown_frame.Visible = false;
+					tab_btn.ZIndex = 1;	
 				end
 			end)
 			
@@ -1623,8 +1618,8 @@ function ui_lib:NewGui()
 								end
 							end
 
-							dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-							local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
+							dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+							local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
 							tween:Play();
 
 							task.spawn(function()
@@ -1671,7 +1666,7 @@ function ui_lib:NewGui()
 			local current_items = {};
 			
 			local tab_btn = Instance.new("Frame", frame);
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -1828,7 +1823,7 @@ function ui_lib:NewGui()
 										if frames == frame then
 											dr1.ZIndex = 1;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
+											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown"):TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, false, function() dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false; end);
 										else
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
 											dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
@@ -1841,16 +1836,16 @@ function ui_lib:NewGui()
 						end
 					end
 
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 4, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 180});
+					dropdown_frame:TweenSize(UDim2.new(1, 0, 4, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 180});
 					tween:Play();
 
 					tab_btn.ZIndex = 3;
 					dropdown_frame.Visible = true;
 					tween.Completed:Wait();
 				elseif dropdown_frame.Visible == true then
-					dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
-					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
+					dropdown_frame:TweenSize(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil);
+					local tween = game:GetService("TweenService"):Create(dropdown_icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Rotation = 0});
 					tween:Play();
 
 					task.spawn(function()
@@ -1947,7 +1942,7 @@ function ui_lib:NewGui()
 			if tostring(value_type) == nil or tostring(value_type) ~= "string" and tostring(value_type) ~= "number" then return error("[dizzy hub] InputBox's value type is undefined. (name: "..tostring(name).." )") end
 			
 			local tab_btn = Instance.new("Frame");
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -2023,7 +2018,7 @@ function ui_lib:NewGui()
 			local settings_status = false;
 			
 			local tab_btn = Instance.new("Frame");
-			tab_btn.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
 			tab_btn.Position = UDim2.new(0, 0, 0, 0);
 			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
@@ -2261,7 +2256,7 @@ function ui_lib:NewGui()
 								if ks1:IsA("Frame") and ks1 ~= tab_btn then
 									if ks1:FindFirstChild("keybind_settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible == true then
 										if frames == frame then
-											keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+											keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 										else
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.new(0, 0, 0, 0);
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.new(1.5, 0, 0.5, 0);
@@ -2276,9 +2271,9 @@ function ui_lib:NewGui()
 					
 					keybind_settings_frame.ZIndex = 5;
 					keybind_settings_frame.Visible = true;
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(3.5, 0, 2.25, 0), UDim2.new(1.5, 0, -0.6, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(3.5, 0, 2.25, 0), UDim2.new(1.5, 0, -0.6, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, nil)
 				elseif keybind_settings_frame.Visible == true then
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				end
 			end)
 			
@@ -2291,7 +2286,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_hold_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				event_con1 = game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
 					if not gui.Parent or gui == nil then
@@ -2339,7 +2334,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				local toggled = false;
 				
@@ -2372,7 +2367,7 @@ function ui_lib:NewGui()
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, function() keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.35, true, function() keybind_settings_frame.Visible = false; end)
 
 				coroutine.resume(coroutine.create(function()
 					action(true)
@@ -2384,7 +2379,7 @@ function ui_lib:NewGui()
 			if tostring(text) == nil then return error("[dizzy hub] Label's text is undefined.") end
 			
 			local tab_label = Instance.new("Frame");
-			tab_label.BackgroundColor3 = Color3.fromRGB(26, 26, 26);
+			tab_label.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_label.Name = tostring(name);
 			tab_label.Position = UDim2.new(0.016, 0, 0, 0);
 			tab_label.Size = UDim2.new(0.935, 0, 0.063, 0);
