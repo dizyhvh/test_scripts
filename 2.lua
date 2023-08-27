@@ -36,7 +36,7 @@ function ui_lib:NewGui()
 	local main_frame = Instance.new("Frame");
 	main_frame.Active = true;
 	main_frame.BackgroundTransparency = 0;
-	main_frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34);
+	main_frame.BackgroundColor3 = Color3.fromRGB(21, 21, 21);
 	main_frame.BorderSizePixel = 0;
 	main_frame.Draggable = true;
 	main_frame.ZIndex = 4;
@@ -60,7 +60,7 @@ function ui_lib:NewGui()
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
-	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596444361";
+	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596612336";
 	tabs_frame.ImageTransparency = 0;
 	tabs_frame.ClipsDescendants = true;
 	tabs_frame.Parent = main_frame;
