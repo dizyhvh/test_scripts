@@ -15,21 +15,19 @@ function ui_lib:NewGui()
 	gui.Enabled = true;
 	gui.Parent = game:GetService("CoreGui");
 
-	coroutine.resume(coroutine.create(function()
-		local char_set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&()*+-,./\:;<=>?^[]{}";
-		local length = math.random(30, 50);
-		local generated = "";
+	local char_set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&()*+-,./\:;<=>?^[]{}";
+	local length = math.random(30, 50);
+	local generated = "";
 
-		for i = 1, length do
-			local rand = math.random(#char_set)
-			generated = generated .. string.sub(char_set, rand, rand)
+	for i = 1, length do
+		local rand = math.random(#char_set)
+		generated = generated .. string.sub(char_set, rand, rand)
 		
-			for i=1,math.random(1, 2) do
-				local rand_char = math.random(1, length);
-				gui.Name = string.sub(generated, 1, rand_char-1) .. "\n" .. string.sub(generated, rand_char+1)
-			end
+		for i=1,math.random(1, 2) do
+			local rand_char = math.random(1, length);
+			gui.Name = string.sub(generated, 1, rand_char-1) .. "\n" .. string.sub(generated, rand_char+1)
 		end
-	end))
+	end
 
 	local str_v = Instance.new("StringValue");
 	str_v.Name = "dizzy_hub";
@@ -54,13 +52,9 @@ function ui_lib:NewGui()
 	ui_aspectratio.DominantAxis = Enum.DominantAxis.Height;
 	ui_aspectratio.Parent = main_frame;
 
-	local ui_c = Instance.new("UICorner");
-	ui_c.CornerRadius = UDim.new(0, 8);
-	ui_c.Parent = main_frame;
-
 	local tabs_frame = Instance.new("ImageLabel");
 	tabs_frame.Active = false;
-	tabs_frame.BackgroundTransparency = 1;
+	tabs_frame.BackgroundTransparency = 0.999;
 	tabs_frame.BorderSizePixel = 0;
 	tabs_frame.Size = UDim2.new(0.23, 0, 0.998, 0);
 	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
@@ -186,11 +180,7 @@ function ui_lib:NewGui()
 	close_gui.Position = UDim2.new(0.955, 0, 0.015, 0);
 	close_gui.TextScaled = true;
 	close_gui.Parent = main_frame;
-	
-	local ui_c = Instance.new("UICorner");
-	ui_c.CornerRadius = UDim.new(0, 8);
-	ui_c.Parent = close_gui;
-	
+
 	local gui_funcs = {};
 	
 	function gui_funcs:BindToClose(action)
@@ -392,10 +382,6 @@ function ui_lib:NewGui()
 	ui_stroke.Transparency = 0;
 	ui_stroke.Parent = oc_menu_btn;
 
-	local ui_c = Instance.new("UICorner");
-	ui_c.CornerRadius = UDim.new(0, 8);
-	ui_c.Parent = oc_menu_btn;
-
 	local kbt = Instance.new("TextLabel");
 	kbt.BackgroundTransparency = 1;
 	kbt.Name = "Title";
@@ -425,10 +411,6 @@ function ui_lib:NewGui()
 	kb.AutoButtonColor = false;
 	kb.Parent = oc_menu_btn;
 
-	local ui_c = Instance.new("UICorner");
-	ui_c.CornerRadius = UDim.new(0, 8);
-	ui_c.Parent = kb;
-	
 	kb.MouseButton1Click:Connect(function()
 		settings_editing_key = not settings_editing_key;
 		
@@ -552,7 +534,7 @@ function ui_lib:NewGui()
 									end
 
 									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
-									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 1}):Play();
 
 									main_frame:TweenSizeAndPosition(UDim2.new(0.001, 0, 0.001, 0), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
 								else
@@ -618,7 +600,7 @@ function ui_lib:NewGui()
 									end
 
 									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
-									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.45, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ImageTransparency = 0}):Play();
 
 									main_frame:TweenSizeAndPosition(UDim2.new(0.29, 0, 0.338, 0), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
 								end
@@ -661,10 +643,6 @@ function ui_lib:NewGui()
 	ui_stroke.Thickness = 1;
 	ui_stroke.Transparency = 0;
 	ui_stroke.Parent = di_btn;
-
-	local ui_c = Instance.new("UICorner");
-	ui_c.CornerRadius = UDim.new(0, 8);
-	ui_c.Parent = di_btn;
 
 	local di_btn_title = Instance.new("TextLabel");
 	di_btn_title.BackgroundTransparency = 1;
@@ -762,13 +740,9 @@ function ui_lib:NewGui()
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
 
-		local ui_c = Instance.new("UICorner");
-		ui_c.CornerRadius = UDim.new(0, 8);
-		ui_c.Parent = btn;
-
 		local frame = Instance.new("ScrollingFrame");
 		frame.BackgroundTransparency = 1;
-		frame.Position = UDim2.new(0, 0, 1, 0);
+		frame.Position = UDim2.new(0, 0, 0.9, 0);
 		frame.Size = UDim2.new(0.99, 0, 0.99, 0);
 		frame.Visible = false;
 		frame.CanvasSize = UDim2.new(0, 0, 1, 0);
@@ -847,7 +821,7 @@ function ui_lib:NewGui()
 						end
 					end
 					
-					settings_main_frame:TweenPosition(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+					settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.25, true, nil);
 					settings_frame.Visible = false;
 					settings_main_frame.Visible = false;
 					settings_main_frame.ScrollBarImageTransparency = 1;
@@ -925,7 +899,7 @@ function ui_lib:NewGui()
 							end
 						end
 						
-						x:TweenPosition(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+						x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.25, true, nil);
 						x.Visible = false;
 						x.ScrollBarImageTransparency = 1;
 						
@@ -933,7 +907,7 @@ function ui_lib:NewGui()
 					end
 				end
 				
-				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(52, 52, 52)});
+				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)});
 				tween:Play();
 				
 				frame.CanvasPosition = Vector2.new(0, 0);
@@ -989,7 +963,7 @@ function ui_lib:NewGui()
 					end
 				end
 				
-				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.45, true, nil);
+				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.25, true, nil);
 				local tween2 = game:GetService("TweenService"):Create(frame, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
 				tween2:Play();
 				
@@ -1001,15 +975,15 @@ function ui_lib:NewGui()
 		frame.Changed:Connect(function()
 		    local canvas_size = (((#frame:GetChildren() - 1) / 10) > 1 and ((#frame:GetChildren() - 1) / 10) or 1);
 		    canvas_size += 1;
-    		    frame.CanvasSize = UDim2.fromScale(0, canvas_size);
+    		frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 
 		    local hardcoded_elSize = 0.0945;
     
-    		    for _,element in pairs(frame:GetChildren()) do
-    		        if element:IsA("Frame") or element:IsA("ScrollingFrame") or element:IsA("TextButton") then
-			    element.Size = UDim2.fromScale(element.Size.X.Scale, hardcoded_elSize / canvas_size);
-    		        end
+    		for _,element in pairs(frame:GetChildren()) do
+    		    if element:IsA("Frame") or element:IsA("ScrollingFrame") or element:IsA("TextButton") then
+			    	element.Size = UDim2.fromScale(element.Size.X.Scale, hardcoded_elSize / canvas_size);
     		    end
+    		end
 		end)
 
 		local tab_funcs = {}
@@ -1034,10 +1008,6 @@ function ui_lib:NewGui()
 			tab_btn.ZIndex = 2;
 			tab_btn.ClipsDescendants = true;
 			tab_btn.Parent = frame;
-
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
 
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
@@ -1121,10 +1091,6 @@ function ui_lib:NewGui()
 			tab_btn.BorderSizePixel = 0;
 			tab_btn.ZIndex = 2;
 			tab_btn.Parent = frame;
-
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
 
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
@@ -1235,10 +1201,6 @@ function ui_lib:NewGui()
 			tab_btn.ZIndex = 2;
 			tab_btn.Parent = frame;
 
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
-
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
 			ui_stroke.Color = Color3.fromRGB(56, 56, 56);
@@ -1270,11 +1232,7 @@ function ui_lib:NewGui()
 			slider_frame.Visible = true;
 			slider_frame.Name = "Slider";
 			slider_frame.Parent = tab_btn;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = slider_frame;
-			
+
 			local slider_handler = Instance.new("TextButton");
 			slider_handler.Active = true;
 			slider_handler.AutoButtonColor = false;
@@ -1288,11 +1246,7 @@ function ui_lib:NewGui()
 			slider_handler.Text = "";
 			slider_handler.TextTransparency = 1;
 			slider_handler.Parent = slider_frame;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 16);
-			ui_c.Parent = slider_handler;
-			
+
 			local text_box = Instance.new("TextBox");
 			text_box.Active = true;
 			text_box.BackgroundColor3 = Color3.fromRGB(48, 48, 48);
@@ -1312,11 +1266,7 @@ function ui_lib:NewGui()
 			text_box.TextStrokeTransparency = 1;
 			text_box.TextScaled = true;
 			text_box.Parent = tab_btn;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8)
-			ui_c.Parent = text_box;
-			
+
 			local function snap(n, f)
 				if f == 0 then
 					return n;
@@ -1434,10 +1384,6 @@ function ui_lib:NewGui()
 			tab_btn.BorderSizePixel = 0;
 			tab_btn.ZIndex = 1;
 			tab_btn.Parent = frame;
-
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
 
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
@@ -1735,10 +1681,6 @@ function ui_lib:NewGui()
 			tab_btn.BorderSizePixel = 0;
 			tab_btn.ZIndex = 1;
 
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
-
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
 			ui_stroke.Color = Color3.fromRGB(56, 56, 56);
@@ -2016,10 +1958,6 @@ function ui_lib:NewGui()
 			tab_btn.ZIndex = 2;
 			tab_btn.Parent = frame;
 
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
-
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
 			ui_stroke.Color = Color3.fromRGB(56, 56, 56);
@@ -2057,11 +1995,7 @@ function ui_lib:NewGui()
 			input_box.TextStrokeTransparency = 1;
 			input_box.Font = Enum.Font.Gotham;
 			input_box.Parent = tab_btn;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = input_box;
-			
+
 			input_box.Changed:Connect(function(p)
 				if p == "Text" and game:GetService("UserInputService"):GetFocusedTextBox() then
 					if tostring(value_type) == "number" and tonumber(input_box.Text) ~= nil then
@@ -2099,10 +2033,6 @@ function ui_lib:NewGui()
 			tab_btn.BorderSizePixel = 0;
 			tab_btn.ZIndex = 2;
 			tab_btn.Parent = frame;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_btn;
 
 			local ui_stroke = Instance.new("UIStroke");
 			ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
@@ -2140,11 +2070,7 @@ function ui_lib:NewGui()
 			keybind_btn.TextStrokeTransparency = 1;
 			keybind_btn.AutoButtonColor = false;
 			keybind_btn.Parent = tab_btn;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = keybind_btn;
-			
+
 			local keybind_settings = Instance.new("ImageButton");
 			keybind_settings.Active = true;
 			keybind_settings.BackgroundTransparency = 1;
@@ -2167,11 +2093,7 @@ function ui_lib:NewGui()
 			keybind_settings_frame.Visible = false;
 			keybind_settings_frame.ZIndex = 1;
 			keybind_settings_frame.Parent = keybind_settings;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = keybind_settings_frame;
-			
+
 			local ui_list_layout = Instance.new("UIListLayout");
 			ui_list_layout.FillDirection = Enum.FillDirection.Vertical;
 			ui_list_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center;
@@ -2193,11 +2115,7 @@ function ui_lib:NewGui()
 			on_hold_btn.TextStrokeTransparency = 1;
 			on_hold_btn.AutoButtonColor = false;
 			on_hold_btn.Parent = keybind_settings_frame;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = on_hold_btn;
-			
+
 			local on_toggle_btn = Instance.new("TextButton");
 			on_toggle_btn.BackgroundTransparency = 0;
 			on_toggle_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
@@ -2212,10 +2130,6 @@ function ui_lib:NewGui()
 			on_toggle_btn.AutoButtonColor = false;
 			on_toggle_btn.Parent = keybind_settings_frame;
 
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = on_toggle_btn;
-			
 			local always_on_btn = Instance.new("TextButton");
 			always_on_btn.BackgroundTransparency = 0;
 			always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
@@ -2230,10 +2144,6 @@ function ui_lib:NewGui()
 			always_on_btn.AutoButtonColor = false;
 			always_on_btn.Parent = keybind_settings_frame;
 
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = always_on_btn;
-			
 			if keybind_mode == 1 then
 				on_hold_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
@@ -2484,10 +2394,6 @@ function ui_lib:NewGui()
 			tab_label.BorderSizePixel = 0;
 			tab_label.ZIndex = 2;
 			tab_label.Parent = frame;
-			
-			local ui_c = Instance.new("UICorner");
-			ui_c.CornerRadius = UDim.new(0, 8);
-			ui_c.Parent = tab_label;
 			
 			local label_title = Instance.new("TextLabel");
 			label_title.BackgroundTransparency = 1;
