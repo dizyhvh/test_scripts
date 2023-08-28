@@ -752,7 +752,7 @@ function ui_lib:NewGui()
 		ui_stroke.Parent = btn;
 
 		local ui_gradient = Instance.new("UIGradient");
-		ui_gradient.Color = ColorSequence.new{};
+		ui_gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))};
 		ui_gradient.Rotation = 0;
 		ui_gradient.Transparency = NumberSequence.new{
 			NumberSequenceKeypoint.new(0, 0.9),
