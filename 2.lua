@@ -1047,6 +1047,10 @@ function ui_lib:NewGui()
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
 
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
+
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
@@ -1128,6 +1132,10 @@ function ui_lib:NewGui()
 			ui_stroke.Thickness = 1;
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
+
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
 
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
@@ -1242,6 +1250,10 @@ function ui_lib:NewGui()
 			ui_stroke.Thickness = 1;
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
+
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
 			
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
@@ -1426,6 +1438,10 @@ function ui_lib:NewGui()
 			ui_stroke.Thickness = 1;
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
+
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
 
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
@@ -1694,6 +1710,10 @@ function ui_lib:NewGui()
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
 
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
+
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
@@ -1958,6 +1978,10 @@ function ui_lib:NewGui()
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
 
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
+
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
@@ -2033,6 +2057,10 @@ function ui_lib:NewGui()
 			ui_stroke.Thickness = 1;
 			ui_stroke.Transparency = 0;
 			ui_stroke.Parent = tab_btn;]]
+
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 6);
+			ui_c.Parent = tab_btn;
 
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
