@@ -417,11 +417,11 @@ function ui_lib:NewGui()
 		local text = {"TextButton", "TextBox", "TextLabel"};
 		local background = {"TextButton", "Frame", "TextBox"};
 
-		if table.find(text, instance.ClassName) do
+		if table.find(text, instance.ClassName) then
 			game:GetService("TweenService"):Create(instance, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = value}):Play();
 		end
 
-		if table.find(background, instance.ClassName) do
+		if table.find(background, instance.ClassName) then
 			game:GetService("TweenService"):Create(instance, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = value}):Play();
 		end
 
