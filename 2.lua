@@ -1574,7 +1574,6 @@ function ui_lib:NewGui()
 						dropdown_text.Text = " "..tostring(v);
 						option_btn.BackgroundColor3 = Color3.fromRGB(52, 52, 52);
 						option_btn.BorderColor3 = Color3.fromRGB(60, 60, 60);
-						tween.Completed:Wait();
 					end)
 				end
 			end
