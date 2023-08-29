@@ -90,7 +90,7 @@ function ui_lib:NewGui()
 	ui_list_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center;
 	ui_list_layout.SortOrder = Enum.SortOrder.LayoutOrder;
 	ui_list_layout.VerticalAlignment = Enum.VerticalAlignment.Top;
-	ui_list_layout.Padding = UDim.new(0, 5);
+	ui_list_layout.Padding = UDim.new(0, 8);
 	ui_list_layout.Parent = tabs_main_frame;
 
 	local tab_frames = Instance.new("Frame");
@@ -737,9 +737,10 @@ function ui_lib:NewGui()
 		btn.TextSize = 15;
 		btn.Font = Enum.Font.Gotham;
 		btn.BorderSizePixel = 0;
-		btn.TextColor3 = Color3.fromRGB(255, 255, 255);
+		btn.TextColor3 = Color3.fromRGB(200, 200, 200);
+		btn.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
 		btn.TextStrokeTransparency = 1;
-		btn.Size = UDim2.new(0.88, 0, 0.11, 0);
+		btn.Size = UDim2.new(0.86, 0, 0.11, 0);
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
 
@@ -747,8 +748,8 @@ function ui_lib:NewGui()
 		ui_stroke.Color = Color3.fromRGB(150, 150, 150);
 		ui_stroke.LineJoinMode = Enum.LineJoinMode.Round;
 		ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
-		ui_stroke.Thickness = 2;
-		ui_stroke.Transparency = 0;
+		ui_stroke.Thickness = 1.5;
+		ui_stroke.Transparency = 1;
 		ui_stroke.Parent = btn;
 
 		local ui_gradient = Instance.new("UIGradient");
@@ -756,10 +757,10 @@ function ui_lib:NewGui()
 		ui_gradient.Rotation = 0;
 		ui_gradient.Transparency = NumberSequence.new{
 			NumberSequenceKeypoint.new(0, 0.9),
-			NumberSequenceKeypoint.new(0.1, 0.35),
-			NumberSequenceKeypoint.new(0.2, 0.2),
-			NumberSequenceKeypoint.new(0.8, 0.2),
-			NumberSequenceKeypoint.new(0.9, 0.35),
+			NumberSequenceKeypoint.new(0.1, 0.7),
+			NumberSequenceKeypoint.new(0.2, 0.5),
+			NumberSequenceKeypoint.new(0.8, 0.5),
+			NumberSequenceKeypoint.new(0.9, 0.7),
 			NumberSequenceKeypoint.new(1, 0.9),
 		};
 		ui_gradient.Parent = ui_stroke;
@@ -931,15 +932,18 @@ function ui_lib:NewGui()
 						x.Visible = false;
 						x.ScrollBarImageTransparency = 1;
 						
-						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(12, 12, 12)}):Play();
-						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)):FindFirstChildOfClass("UIStroke"), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 0}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(24, 24, 24)}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(200, 200, 200)}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextStrokeTransparency = 1}):Play();
+						game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)):FindFirstChildOfClass("UIStroke"), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1}):Play();
 					end
 				end
 				
-				game:GetService("TweenService"):Create(ui_stroke, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1}):Play();
-				local tween = game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(24, 24, 24)});
-				tween:Play();
-				
+				game:GetService("TweenService"):Create(ui_stroke, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 0}):Play();
+				game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(12, 12, 12)}):Play();
+				game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play();
+				game:GetService("TweenService"):Create(btn, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {TextStrokeTransparency = 0.8}):Play();
+
 				frame.CanvasPosition = Vector2.new(0, 0);
 				frame.Visible = true;
 				
@@ -994,11 +998,8 @@ function ui_lib:NewGui()
 				end
 				
 				frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
-				local tween2 = game:GetService("TweenService"):Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0});
-				tween2:Play();
-				
-				tween.Completed:Wait();
-				tween2.Completed:Wait();
+				game:GetService("TweenService"):Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {ScrollBarImageTransparency = 0}):Play();
+				task.wait(0.5);
 			end
 		end)
 		
