@@ -208,9 +208,9 @@ function ui_lib:NewGui()
 		end
 		
 		game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play();
-		game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play();
+		game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play();
 		
-		main_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(old_frame_pos.X.Scale, old_frame_pos.X.Offset+275, old_frame_pos.Y.Scale, old_frame_pos.Y.Offset+150), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() gui:Destroy() end)
+		main_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.new(old_frame_pos.X.Scale, old_frame_pos.X.Offset, old_frame_pos.Y.Scale, old_frame_pos.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() gui:Destroy() end)
 	end)
 
 	local function ChangeTransparency(instance, value)
@@ -349,8 +349,7 @@ function ui_lib:NewGui()
 			end
 		end
 		
-		frame:TweenPosition(UDim2.new(0.01, 0, 0.01, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
-		game:GetService("TweenService"):Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ScrollBarImageTransparency = 0}):Play();
+		frame:TweenPosition(UDim2.fromScale(0.01, 0.01), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 	end
 
 	local function HideSettings()
@@ -400,13 +399,13 @@ function ui_lib:NewGui()
 		settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 		settings_frame.Visible = false;
 		settings_main_frame.Visible = false;
-		settings_main_frame.ScrollBarImageTransparency = 1;
 	end
 
 	settings_button.MouseButton1Click:Connect(function()
 		if not settings_frame.Visible then
 			HideAllFrames(settings_frame);
-			ShowFrame(settings_frame);
+			settings_frame.Visible = true;
+			ShowFrame(settings_main_frame);
 
 			settings_main_frame.Visible = true;
 		end
@@ -450,7 +449,7 @@ function ui_lib:NewGui()
 	kbt.Position = UDim2.new(0.025, 0, 0.15, 0);
 	kbt.Visible = true;
 	kbt.Active = false;
-	kbt.Text = "Open/Close Menu";
+	kbt.Text = "Toggle Menu";
 	kbt.TextScaled = true;
 	kbt.TextColor3 = Color3.fromRGB(255, 255, 255);
 	kbt.Font = Enum.Font.Gotham;
@@ -494,11 +493,9 @@ function ui_lib:NewGui()
 							kb.Text = tostring(game:GetService("UserInputService"):GetStringForKeyCode(input.KeyCode));
 							keybind_debounce = true;
 
-							task.spawn(function()
-								delay(0.5, function()
-									keybind_debounce = false;
-								end)
-							end);
+							task.spawn(delay, 0.5, function()
+								keybind_debounce = false;
+							end)
 
 							settings_keybind_mainevent:Disconnect();
 						else
@@ -531,7 +528,7 @@ function ui_lib:NewGui()
 							menu_toggled = not menu_toggled;
 							keybind_debounce = true;
 							
-							pcall(function()
+							task.spawn(function()
 								if menu_toggled then
 									for _,x in pairs(tab_frames:GetChildren()) do
 										if x:IsA("ScrollingFrame") then
@@ -583,9 +580,10 @@ function ui_lib:NewGui()
 										end
 									end
 
-									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 1, ImageTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play();
 
-									main_frame:TweenSizeAndPosition(UDim2.new(0.001, 0, 0.001, 0), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
+									main_frame:TweenSizeAndPosition(UDim2.fromScale(0.001, 0.001), UDim2.new(0.51, main_frame.Position.X.Offset, 0.489, main_frame.Position.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 								else
 									for _,x in pairs(tab_frames:GetChildren()) do
 										if x:IsA("ScrollingFrame") then
@@ -639,17 +637,16 @@ function ui_lib:NewGui()
 										end
 									end
 
-									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0, ImageTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(main_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play();
+									game:GetService("TweenService"):Create(tabs_frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play();
 
-									main_frame:TweenSizeAndPosition(UDim2.new(0.29, 0, 0.338, 0), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
+									main_frame:TweenSizeAndPosition(UDim2.fromScale(0.29, 0.338), UDim2.new(0.367, main_frame.Position.X.Offset, 0.329, main_frame.Position.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 								end
 							end)
 							
-							task.spawn(function()
-								delay(0.5, function()
-									keybind_debounce = false;
-								end)
-							end);
+							task.spawn(delay, 0.5, function()
+								keybind_debounce = false;
+							end)
 						end
 					end
 				end
@@ -705,15 +702,15 @@ function ui_lib:NewGui()
    				Url = "http://127.0.0.1:6463/rpc?v=1",
    				Method = "POST",
    				Headers = {
-       					["Content-Type"] = "application/json",
-       					["Origin"] = "https://discord.com"
+       				["Content-Type"] = "application/json",
+       				["Origin"] = "https://discord.com"
    				},
    				Body = game:GetService("HttpService"):JSONEncode({
-       					cmd = "INVITE_BROWSER",
-       					args = {
-           					code = "AZU2zmGf9a"
-       					},
-       					nonce = game:GetService("HttpService"):GenerateGUID(false)
+       				cmd = "INVITE_BROWSER",
+       				args = {
+           				code = "AZU2zmGf9a"
+       				},
+       				nonce = game:GetService("HttpService"):GenerateGUID(false)
    				}),
 			});
 		end));
@@ -763,7 +760,7 @@ function ui_lib:NewGui()
 		local btn = Instance.new("TextButton");
 		btn.Active = true;
 		btn.AutoButtonColor = false;
-		btn.BackgroundColor3 = Color3.fromRGB(38, 38, 38);
+		btn.BackgroundColor3 = Color3.fromRGB(24, 24, 24);
 		btn.BackgroundTransparency = 0;
 		btn.Name = tostring(name);
 		btn.Text = tostring(name);
@@ -1206,25 +1203,20 @@ function ui_lib:NewGui()
 							slider_value = math.floor((1*(slider_handler.Position.X.Scale*max) * 100)) / 100;
 						end
 						
+						text_box.TextEditable = false;
+
 						if slider_value < min then
-							text_box.TextEditable = false;
 							text_box.Text = tostring(min);
-
 							task.spawn(action, tonumber(min));
-							text_box.TextEditable = true;
 						elseif slider_value > max then
-							text_box.TextEditable = false;
 							text_box.Text = tostring(max);
-
 							task.spawn(action, tonumber(max));
-							text_box.TextEditable = true;
 						else
-							text_box.TextEditable = false;
 							text_box.Text = tostring(slider_value);
-
 							task.spawn(action, tonumber(slider_value));
-							text_box.TextEditable = true;
 						end
+
+						text_box.TextEditable = true;
 					end
 				end)
 			end)
@@ -1332,7 +1324,7 @@ function ui_lib:NewGui()
 			dropdown_frame.Visible = false;
 			dropdown_frame.Name = "Dropdown";
 			dropdown_frame.ZIndex = 3;
-			dropdown_frame.CanvasSize = UDim2.new(0, 0, 10, 0);
+			dropdown_frame.CanvasSize = UDim2.new(0, 0, 1, 0);
 			dropdown_frame.Parent = dropdown_btn;
 			
 			local ui_list_layout = Instance.new("UIListLayout");
@@ -1345,8 +1337,9 @@ function ui_lib:NewGui()
 			
 			local canvas_size = (((#items) / 10) > 1 and ((#items) / 10) or 1);
     		dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
+			print(dropdown_frame.CanvasSize);
 
-		    local element_size = 0.1;
+		    local element_size = 0.2;
 			for i,v in pairs(items) do
 				if items ~= nil and type(items) == "table" then
 					local option_btn = Instance.new("TextButton");
@@ -2206,4 +2199,4 @@ function ui_lib:NewGui()
 	return gui_funcs;
 end
 
-return ui_lib
+return ui_lib;
