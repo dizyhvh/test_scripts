@@ -40,8 +40,8 @@ function ui_lib:NewGui()
 	main_frame.BorderSizePixel = 0;
 	main_frame.Draggable = true;
 	main_frame.ZIndex = 4;
-	main_frame.Size = UDim2.new(0.31, 0, 0.338, 0);
-	main_frame.Position = UDim2.new(0.345, 0, 0.331, 0);
+	main_frame.Size = UDim2.fromScale(0.31, 0.338);
+	main_frame.Position = UDim2.fromScale(0.345, 0.331);
 	main_frame.Name = "Main";
 	main_frame.ClipsDescendants = true;
 	main_frame.Parent = gui;
@@ -56,8 +56,8 @@ function ui_lib:NewGui()
 	tabs_frame.Active = false;
 	tabs_frame.BackgroundTransparency = 1;
 	tabs_frame.BorderSizePixel = 0;
-	tabs_frame.Size = UDim2.new(0.23, 0, 1, 0);
-	tabs_frame.Position = UDim2.new(0, 0, 0, 0);
+	tabs_frame.Size = UDim2.fromScale(0.23, 1);
+	tabs_frame.Position = UDim2.fromScale(0, 0);
 	tabs_frame.Name = "Tabs";
 	tabs_frame.ZIndex = 3;
 	tabs_frame.Image = "http://www.roblox.com/asset/?id=14596612336";
@@ -81,8 +81,8 @@ function ui_lib:NewGui()
 	tabs_main_frame.BackgroundTransparency = 1;
 	tabs_main_frame.Visible = true;
 	tabs_main_frame.Name = "Main";
-	tabs_main_frame.Size = UDim2.new(1, 0, 0.88, 0);
-	tabs_main_frame.Position = UDim2.new(0, 0, 0.12, 0);
+	tabs_main_frame.Size = UDim2.fromScale(1, 0.88);
+	tabs_main_frame.Position = UDim2.fromScale(0, 0.12);
 	tabs_main_frame.Parent = tabs_frame;
 
 	local ui_list_layout = Instance.new("UIListLayout");
@@ -94,8 +94,8 @@ function ui_lib:NewGui()
 	ui_list_layout.Parent = tabs_main_frame;
 
 	local tab_frames = Instance.new("Frame");
-	tab_frames.Size = UDim2.new(0.759, 0, 0.9, 0);
-	tab_frames.Position = UDim2.new(0.241, 0, 0.09, 0);
+	tab_frames.Size = UDim2.fromScale(0.759, 0.9);
+	tab_frames.Position = UDim2.fromScale(0.241, 0.09);
 	tab_frames.BackgroundTransparency = 1;
 	tab_frames.ZIndex = 3;
 	tab_frames.Name = "TabFrames";
@@ -105,32 +105,51 @@ function ui_lib:NewGui()
 	local title = Instance.new("TextLabel");
 	title.Active = false;
 	title.BackgroundTransparency = 1;
-	title.Size = UDim2.new(1, 0, 0.065, 0);
-	title.Position = UDim2.new(0, 0, 0.015, 0);
+	title.Size = UDim2.fromScale(1, 0.05);
+	title.Position = UDim2.fromScale(0, 0.02);
 	title.Visible = true;
 	title.Text = "dizzy hub";
-	title.FontFace = Font.fromId(11598121416, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	title.Font = Enum.Font.Gotham;
 	title.TextScaled = true;
 	title.TextColor3 = Color3.fromRGB(255, 255, 255);
+	title.TextStrokeColor3 = Color3.fromRGB(255, 255, 255);
 	title.TextStrokeTransparency = 1;
 	title.Name = "Title";
 	title.TextXAlignment = Enum.TextXAlignment.Center;
 	title.Parent = main_frame;
 
+	local tween1 = game:GetService("TweenService"):Create(title, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(255, 255, 255), TextStrokeTransparency = 0.8});
+	local tween2 = game:GetService("TweenService"):Create(title, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(200, 200, 200), TextStrokeTransparency = 1});
+	task.spawn(function()
+		while task.wait(3) do
+			if gui == nil or title == nil then
+				break;
+			end
+
+			tween1:Play();
+			tween1.Completed:Wait();
+
+			task.wait(3);
+
+			tween2:Play();
+			tween2.Completed:Wait();
+		end
+	end)
+
 	local settings_button = Instance.new("ImageButton");
 	settings_button.Active = true;
 	settings_button.BackgroundTransparency = 1;
 	settings_button.Name = "Settings_Button";
-	settings_button.Position = UDim2.new(0.005, 0, 0.015, 0);
-	settings_button.Size = UDim2.new(0.04, 0, 0.07, 0);
+	settings_button.Position = UDim2.fromScale(0.005, 0.015);
+	settings_button.Size = UDim2.fromScale(0.04, 0.07);
 	settings_button.Image = "rbxassetid://1185031129";
 	settings_button.Visible = true;
 	settings_button.ZIndex = 3;
 	settings_button.Parent = main_frame;
 	
 	local settings_frame = Instance.new("Frame");
-	settings_frame.Size = UDim2.new(0.759, 0, 0.9, 0);
-	settings_frame.Position = UDim2.new(0.241, 0, 0.09, 0);
+	settings_frame.Size = UDim2.fromScale(0.759, 0.9);
+	settings_frame.Position = UDim2.fromScale(0.241, 0.09);
 	settings_frame.BackgroundTransparency = 1;
 	settings_frame.ZIndex = 3;
 	settings_frame.Name = "Settings";
@@ -141,10 +160,10 @@ function ui_lib:NewGui()
 	local settings_main_frame = Instance.new("ScrollingFrame");
 	settings_main_frame.Active = false;
 	settings_main_frame.BackgroundTransparency = 1;
-	settings_main_frame.Position = UDim2.new(0.01, 0, 1, 0);
-	settings_main_frame.Size = UDim2.new(1, 0, 1, 0);
+	settings_main_frame.Position = UDim2.fromScale(0.01, 1);
+	settings_main_frame.Size = UDim2.fromScale(1, 1);
 	settings_main_frame.Visible = false;
-	settings_main_frame.CanvasSize = UDim2.new(0, 0, 1.5, 0);
+	settings_main_frame.CanvasSize = UDim2.fromScale(0, 1.5);
 	settings_main_frame.CanvasPosition = Vector2.new(0, 0);
 	settings_main_frame.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 60);
 	settings_main_frame.ScrollBarThickness = 6;
@@ -180,8 +199,8 @@ function ui_lib:NewGui()
 	close_gui.TextColor3 = Color3.fromRGB(255, 255, 255);
 	close_gui.TextSize = 11;
 	close_gui.TextStrokeTransparency = 1;
-	close_gui.Size = UDim2.new(0.036, 0, 0.06, 0);
-	close_gui.Position = UDim2.new(0.955, 0, 0.015, 0);
+	close_gui.Size = UDim2.fromScale(0.036, 0.06);
+	close_gui.Position = UDim2.fromScale(0.955, 0.015);
 	close_gui.TextScaled = true;
 	close_gui.Parent = main_frame;
 
@@ -277,12 +296,12 @@ function ui_lib:NewGui()
 							if dr_cs1:IsA("Frame") then
 								if dr_cs1:FindFirstChild("dropdown_btn") ~= nil and dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
 									dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-									dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
+									dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.fromScale(1, 0);
 									dr_cs1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
 									dr_cs1:FindFirstChild("dropdown_btn").ZIndex = 1;
 								elseif dr_cs1:FindFirstChild("keybind_settings") ~= nil and dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings") ~= nil and dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible == true then
-									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.new(0, 0, 0, 0);
-									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.new(1.5, 0, -0.6, 0);
+									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.fromScale(0, 0);
+									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.fromScale(1.5, -0.6);
 									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible = false;
 									dr_cs1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").ZIndex = 1;
 								end
@@ -291,12 +310,12 @@ function ui_lib:NewGui()
 					end
 				end
 				
-				x:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
+				x:TweenPosition(UDim2.fromScale(0, 0.9), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 				x.Visible = false;
 				x.ScrollBarImageTransparency = 1;
 				
-				game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(24, 24, 24), TextColor3 = Color3.fromRGB(200, 200, 200), TextStrokeTransparency = 1}):Play();
-				game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(tostring(x.Name)):FindFirstChildOfClass("UIStroke"), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1}):Play();
+				game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(x.Name), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(24, 24, 24), TextColor3 = Color3.fromRGB(200, 200, 200), TextStrokeTransparency = 1}):Play();
+				game:GetService("TweenService"):Create(tabs_main_frame:FindFirstChild(x.Name):FindFirstChildOfClass("UIStroke"), TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1}):Play();
 			end
 		end
 	end
@@ -396,7 +415,7 @@ function ui_lib:NewGui()
 			end
 		end
 		
-		settings_main_frame:TweenPosition(UDim2.new(0, 0, 0.9, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
+		settings_main_frame:TweenPosition(UDim2.fromScale(0, 0.9), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil);
 		settings_frame.Visible = false;
 		settings_main_frame.Visible = false;
 	end
@@ -425,14 +444,18 @@ function ui_lib:NewGui()
 	local oc_menu_btn = Instance.new("Frame");
 	oc_menu_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 	oc_menu_btn.Name = "Menu_Keybind";
-	oc_menu_btn.Position = UDim2.new(0, 0, 0, 0);
-	oc_menu_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
+	oc_menu_btn.Position = UDim2.fromScale(0, 0);
+	oc_menu_btn.Size = UDim2.fromScale(0.95, 0.063);
 	oc_menu_btn.Transparency = 1;
 	oc_menu_btn.Visible = true;
 	oc_menu_btn.BackgroundTransparency = 0;
 	oc_menu_btn.BorderSizePixel = 0;
 	oc_menu_btn.ZIndex = 2;
 	oc_menu_btn.Parent = settings_main_frame;
+
+	local ui_c = Instance.new("UICorner");
+	ui_c.CornerRadius = UDim.new(0, 6);
+	ui_c.Parent = oc_menu_btn;
 
 	local ui_stroke = Instance.new("UIStroke");
 	ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
@@ -445,8 +468,8 @@ function ui_lib:NewGui()
 	local kbt = Instance.new("TextLabel");
 	kbt.BackgroundTransparency = 1;
 	kbt.Name = "Title";
-	kbt.Size = UDim2.new(0.457, 0, 0.75, 0);
-	kbt.Position = UDim2.new(0.025, 0, 0.15, 0);
+	kbt.Size = UDim2.fromScale(0.457, 0.75);
+	kbt.Position = UDim2.fromScale(0.025, 0.15);
 	kbt.Visible = true;
 	kbt.Active = false;
 	kbt.Text = "Toggle Menu";
@@ -460,8 +483,8 @@ function ui_lib:NewGui()
 	kb.BackgroundTransparency = 0;
 	kb.BackgroundColor3 = Color3.fromRGB(48, 48, 48);
 	kb.Name = "Keybind";
-	kb.Position = UDim2.new(0.825, 0, 0.075, 0);
-	kb.Size = UDim2.new(0.15, 0, 0.85, 0);
+	kb.Position = UDim2.fromScale(0.825, 0.075);
+	kb.Size = UDim2.fromScale(0.15, 0.85);
 	kb.Visible = true;
 	kb.Text = "None";
 	kb.TextColor3 = Color3.fromRGB(255, 255, 255);
@@ -658,8 +681,8 @@ function ui_lib:NewGui()
 	di_btn.Active = true;
 	di_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 	di_btn.Name = "Join_DS";
-	di_btn.Position = UDim2.new(0, 0, 0, 0);
-	di_btn.Size = UDim2.new(0.935, 0, 0.063, 0);
+	di_btn.Position = UDim2.fromScale(0, 0);
+	di_btn.Size = UDim2.fromScale(0.95, 0.063);
 	di_btn.Text = "";
 	di_btn.Transparency = 1;
 	di_btn.Style = Enum.ButtonStyle.Custom;
@@ -672,6 +695,10 @@ function ui_lib:NewGui()
 	di_btn.ClipsDescendants = true;
 	di_btn.Parent = settings_main_frame;
 
+	local ui_c = Instance.new("UICorner");
+	ui_c.CornerRadius = UDim.new(0, 6);
+	ui_c.Parent = di_btn;
+
 	local ui_stroke = Instance.new("UIStroke");
 	ui_stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
 	ui_stroke.Color = Color3.fromRGB(38, 38, 38);
@@ -683,8 +710,8 @@ function ui_lib:NewGui()
 	local di_btn_title = Instance.new("TextLabel");
 	di_btn_title.BackgroundTransparency = 1;
 	di_btn_title.Name = "Title";
-	di_btn_title.Size = UDim2.new(0.945, 0, 0.75, 0);
-	di_btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+	di_btn_title.Size = UDim2.fromScale(0.945, 0.75);
+	di_btn_title.Position = UDim2.fromScale(0.025, 0.15);
 	di_btn_title.Visible = true;
 	di_btn_title.Active = false;
 	di_btn_title.Text = "Join Discord Server";
@@ -722,8 +749,8 @@ function ui_lib:NewGui()
 			ripple_image.Name = "0";
 			ripple_image.Image = "http://www.roblox.com/asset/?id=4560909609";
 			ripple_image.ImageTransparency = 0.1;
-			ripple_image.Size = UDim2.new(0, 0, 0, 0);
-			ripple_image.Position = UDim2.new(0, 0, 0, 0);
+			ripple_image.Size = UDim2.fromScale(0, 0);
+			ripple_image.Position = UDim2.fromScale(0, 0);
 			ripple_image.ZIndex = 1;
 			ripple_image.BackgroundTransparency = 1;
 			ripple_image.ImageColor3 = Color3.fromRGB(80, 80, 80);
@@ -771,7 +798,7 @@ function ui_lib:NewGui()
 		btn.TextColor3 = Color3.fromRGB(200, 200, 200);
 		btn.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
 		btn.TextStrokeTransparency = 1;
-		btn.Size = UDim2.new(0.86, 0, 0.11, 0);
+		btn.Size = UDim2.fromScale(0.86, 0.11);
 		btn.Visible = true;
 		btn.Parent = tabs_main_frame;
 
@@ -802,10 +829,10 @@ function ui_lib:NewGui()
 
 		local frame = Instance.new("ScrollingFrame");
 		frame.BackgroundTransparency = 1;
-		frame.Position = UDim2.new(0, 0, 0.9, 0);
-		frame.Size = UDim2.new(0.99, 0, 0.99, 0);
+		frame.Position = UDim2.fromScale(0, 0.9);
+		frame.Size = UDim2.fromScale(0.99, 0.99);
 		frame.Visible = false;
-		frame.CanvasSize = UDim2.new(0, 0, 0.9, 0);
+		frame.CanvasSize = UDim2.fromScale(0, 0.9);
 		frame.CanvasPosition = Vector2.new(0, 0);
 		frame.ScrollBarImageColor3 = Color3.fromRGB(56, 56, 56);
 		frame.ScrollBarThickness = 6;
@@ -844,7 +871,7 @@ function ui_lib:NewGui()
 		end)
 		
 		frame.Changed:Connect(function()
-		    local canvas_size = (((#frame:GetChildren()) / 10) > 1 and ((#frame:GetChildren()) / 10) or 1);
+		    local canvas_size = (((#frame:GetChildren() + 1) / 10) * 1.1 > 1 and ((#frame:GetChildren() + 1) / 10) * 1.1 or 1);
     		frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 
 		    local element_size = 0.0945;
@@ -865,8 +892,8 @@ function ui_lib:NewGui()
 			tab_btn.Active = true;
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Text = "";
 			tab_btn.TextTransparency = 1;
 			tab_btn.Style = Enum.ButtonStyle.Custom;
@@ -894,8 +921,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.945, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.945, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -915,8 +942,8 @@ function ui_lib:NewGui()
 					ripple_image.Name = "0";
 					ripple_image.Image = "http://www.roblox.com/asset/?id=4560909609";
 					ripple_image.ImageTransparency = 0.1;
-					ripple_image.Size = UDim2.new(0, 0, 0, 0);
-					ripple_image.Position = UDim2.new(0, 0, 0, 0);
+					ripple_image.Size = UDim2.fromScale(0, 0);
+					ripple_image.Position = UDim2.fromScale(0, 0);
 					ripple_image.ZIndex = 1;
 					ripple_image.BackgroundTransparency = 1;
 					ripple_image.ImageColor3 = Color3.fromRGB(80, 80, 80);
@@ -953,8 +980,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame");
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -977,8 +1004,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.875, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.085, 0, 0.1, 0);
+			btn_title.Size = UDim2.fromScale(0.875, 0.75);
+			btn_title.Position = UDim2.fromScale(0.085, 0.1);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -991,8 +1018,8 @@ function ui_lib:NewGui()
 			local untoggled_image = Instance.new("ImageButton");
 			untoggled_image.Active = true;
 			untoggled_image.BackgroundTransparency = 1;
-			untoggled_image.Position = UDim2.new(0.02, 0, 0.15, 0);
-			untoggled_image.Size = UDim2.new(0.0505, 0, 0.7, 0);
+			untoggled_image.Position = UDim2.fromScale(0.02, 0.15);
+			untoggled_image.Size = UDim2.fromScale(0.0505, 0.7);
 			untoggled_image.Visible = true;
 			untoggled_image.Image = "http://www.roblox.com/asset/?id=14596065772";
 			untoggled_image.ImageTransparency = 0;
@@ -1010,8 +1037,8 @@ function ui_lib:NewGui()
 			local toggled_image = Instance.new("ImageButton");
 			toggled_image.Active = true;
 			toggled_image.BackgroundTransparency = 1;
-			toggled_image.Position = UDim2.new(0.02, 0, 0.15, 0);
-			toggled_image.Size = UDim2.new(0.0505, 0, 0.7, 0);
+			toggled_image.Position = UDim2.fromScale(0.02, 0.15);
+			toggled_image.Size = UDim2.fromScale(0.0505, 0.7);
 			toggled_image.Visible = false;
 			toggled_image.Image = "rbxassetid://1264515756";
 			toggled_image.ImageTransparency = 1;
@@ -1064,8 +1091,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame");
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0.149);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -1088,8 +1115,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.35, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.35, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -1103,8 +1130,8 @@ function ui_lib:NewGui()
 			slider_frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48);
 			slider_frame.BackgroundTransparency = 0;
 			slider_frame.BorderSizePixel = 0;
-			slider_frame.Position = UDim2.new(0.5, 0, 0.45, 0);
-			slider_frame.Size = UDim2.new(0.35, 0, 0.18, 0);
+			slider_frame.Position = UDim2.fromScale(0.5, 0.45);
+			slider_frame.Size = UDim2.fromScale(0.35, 0.18);
 			slider_frame.Visible = true;
 			slider_frame.Name = "Slider";
 			slider_frame.Parent = tab_btn;
@@ -1116,12 +1143,16 @@ function ui_lib:NewGui()
 			slider_handler.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 			slider_handler.BorderSizePixel = 0;
 			slider_handler.Name = "button";
-			slider_handler.Position = UDim2.new(0, 0, -0.5, 0);
-			slider_handler.Size = UDim2.new(0.06, 0, 1.75, 0);
+			slider_handler.Position = UDim2.fromScale(0, -0.5);
+			slider_handler.Size = UDim2.fromScale(0.06, 1.75);
 			slider_handler.Visible = true;
 			slider_handler.Text = "";
 			slider_handler.TextTransparency = 1;
 			slider_handler.Parent = slider_frame;
+
+			local ui_c = Instance.new("UICorner");
+			ui_c.CornerRadius = UDim.new(0, 16);
+			ui_c.Parent = slider_handler;
 
 			local text_box = Instance.new("TextBox");
 			text_box.Active = true;
@@ -1130,9 +1161,9 @@ function ui_lib:NewGui()
 			text_box.BorderSizePixel = 0;
 			text_box.ClearTextOnFocus = false;
 			text_box.Name = "box";
-			text_box.Position = UDim2.new(0.9, 0, 0.1, 0);
+			text_box.Position = UDim2.fromScale(0.9, 0.1);
 			text_box.ShowNativeInput = true;
-			text_box.Size = UDim2.new(0.0635, 0, 0.8, 0);
+			text_box.Size = UDim2.fromScale(0.0635, 0.8);
 			text_box.TextEditable = true;
 			text_box.Visible = true;
 			text_box.Text = tostring(min);
@@ -1148,7 +1179,7 @@ function ui_lib:NewGui()
 					return n;
 				end
 
-				return math.floor(n/f+0.5)*f;
+				return math.floor(n/f+(n < 0 and -0.5 or 0.5))*f;
 			end
 			
 			text_box.Changed:Connect(function(p)
@@ -1231,8 +1262,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame");
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0.149);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -1255,8 +1286,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.35, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.35, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -1274,8 +1305,8 @@ function ui_lib:NewGui()
 			dropdown_btn.BorderColor3 = Color3.fromRGB(35, 35, 35);
 			dropdown_btn.BorderSizePixel = 1;
 			dropdown_btn.Name = "dropdown_btn";
-			dropdown_btn.Position = UDim2.new(0.72, 0, 0.1, 0);
-			dropdown_btn.Size = UDim2.new(0.25, 0, 0.775, 0);
+			dropdown_btn.Position = UDim2.fromScale(0.695, 0.1225);
+			dropdown_btn.Size = UDim2.fromScale(0.275, 0.77);
 			dropdown_btn.Visible = true;
 			dropdown_btn.Text = "";
 			dropdown_btn.TextTransparency = 1;
@@ -1287,8 +1318,8 @@ function ui_lib:NewGui()
 			dropdown_text.Active = false;
 			dropdown_text.BackgroundTransparency = 1;
 			dropdown_text.Name = "dropdown_text";
-			dropdown_text.Position = UDim2.new(0, 0, 0, 0);
-			dropdown_text.Size = UDim2.new(0.75, 0, 1, 0);
+			dropdown_text.Position = UDim2.fromScale(0, 0.075);
+			dropdown_text.Size = UDim2.fromScale(0.75, 0.85);
 			dropdown_text.Visible = true;
 			dropdown_text.Font = Enum.Font.Gotham;
 			dropdown_text.Text = " ...";
@@ -1303,28 +1334,28 @@ function ui_lib:NewGui()
 			dropdown_icon.Active = false;
 			dropdown_icon.BackgroundTransparency = 1;
 			dropdown_icon.Name = "dropdown_icon";
-			dropdown_icon.Position = UDim2.new(0.8, 0, 0.15, 0);
-			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
+			dropdown_icon.Position = UDim2.fromScale(0.8, 0.15);
+			dropdown_icon.Size = UDim2.fromScale(0.15, 0.75);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
 			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383084";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_icon.Parent = dropdown_btn;
 			
+			local canvas_size = (#items + 1) / 1.5;
 			local dropdown_frame = Instance.new("ScrollingFrame");
 			dropdown_frame.BackgroundColor3 = Color3.fromRGB(44, 44, 44);
 			dropdown_frame.BorderSizePixel = 0;
 			dropdown_frame.BackgroundTransparency = 0;
 			dropdown_frame.BorderColor3 = Color3.fromRGB(35, 35, 35);
-			dropdown_frame.Position = UDim2.new(0, 0, 1, 0);
-			dropdown_frame.Size = UDim2.new(1, 0, 0, 0);
-			dropdown_frame.Visible = true;
+			dropdown_frame.Position = UDim2.fromScale(0, 1);
+			dropdown_frame.Size = UDim2.fromScale(1, 0);
+			dropdown_frame.ScrollBarThickness = 4;
 			dropdown_frame.ScrollingDirection = Enum.ScrollingDirection.Y;
-			dropdown_frame.ScrollBarThickness = 5;
 			dropdown_frame.Visible = false;
 			dropdown_frame.Name = "Dropdown";
 			dropdown_frame.ZIndex = 3;
-			dropdown_frame.CanvasSize = UDim2.new(0, 0, 1, 0);
+			dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 			dropdown_frame.Parent = dropdown_btn;
 			
 			local ui_list_layout = Instance.new("UIListLayout");
@@ -1334,12 +1365,8 @@ function ui_lib:NewGui()
 			ui_list_layout.VerticalAlignment = Enum.VerticalAlignment.Top;
 			ui_list_layout.Padding = UDim.new(0, 3);
 			ui_list_layout.Parent = dropdown_frame;
-			
-			local canvas_size = (((#items) / 10) > 1 and ((#items) / 10) or 1);
-    		dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
-			print(dropdown_frame.CanvasSize);
 
-		    local element_size = 0.2;
+		    local element_size = 0.625;
 			for i,v in pairs(items) do
 				if items ~= nil and type(items) == "table" then
 					local option_btn = Instance.new("TextButton");
@@ -1348,7 +1375,7 @@ function ui_lib:NewGui()
 					option_btn.BorderColor3 = Color3.fromRGB(30, 30, 30);
 					option_btn.BorderSizePixel = 1;
 					option_btn.Name = tostring(v);
-					option_btn.Font = Enum.Font.Gotham;
+					option_btn.FontFace = Font.fromId(11598121416, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 					option_btn.Text = tostring(v);
 					option_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 					option_btn.TextScaled = true;
@@ -1385,7 +1412,7 @@ function ui_lib:NewGui()
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
 										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.fromScale(1, 0);
 										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
 										dr1.ZIndex = 1;
 									end
@@ -1416,11 +1443,8 @@ function ui_lib:NewGui()
 						end
 					end
 					
-					local canvas_size = (((#items) / 10) > 1 and ((#items) / 10) or 1);
+					local canvas_size = (#items + 1) / 1.5;
 					dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
-					if #items >= 10 then
-						dropdown_frame.CanvasSize = UDim2.new(0, 0, 10 + (#items * 0.01), 0);
-					end
 
 					for i,v in pairs(items) do
 						local option_btn = Instance.new("TextButton");
@@ -1429,7 +1453,7 @@ function ui_lib:NewGui()
 						option_btn.BorderColor3 = Color3.fromRGB(30, 30, 30);
 						option_btn.BorderSizePixel = 1;
 						option_btn.Name = tostring(v);
-						option_btn.Font = Enum.Font.Gotham;
+						option_btn.FontFace = Font.fromId(11598121416, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 						option_btn.Text = tostring(v);
 						option_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 						option_btn.TextScaled = true;
@@ -1485,8 +1509,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame", frame);
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0.149, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0.149);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -1508,8 +1532,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.35, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.35, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -1527,8 +1551,8 @@ function ui_lib:NewGui()
 			dropdown_btn.BorderColor3 = Color3.fromRGB(35, 35, 35);
 			dropdown_btn.BorderSizePixel = 1;
 			dropdown_btn.Name = "dropdown_btn";
-			dropdown_btn.Position = UDim2.new(0.72, 0, 0.1, 0);
-			dropdown_btn.Size = UDim2.new(0.25, 0, 0.775, 0);
+			dropdown_btn.Position = UDim2.fromScale(0.695, 0.1225);
+			dropdown_btn.Size = UDim2.fromScale(0.275, 0.77);
 			dropdown_btn.Visible = true;
 			dropdown_btn.Text = "";
 			dropdown_btn.TextTransparency = 1;
@@ -1540,8 +1564,8 @@ function ui_lib:NewGui()
 			dropdown_text.Active = false;
 			dropdown_text.BackgroundTransparency = 1;
 			dropdown_text.Name = "dropdown_text";
-			dropdown_text.Position = UDim2.new(0, 0, 0, 0);
-			dropdown_text.Size = UDim2.new(0.75, 0, 1, 0);
+			dropdown_text.Position = UDim2.fromScale(0, 0.075);
+			dropdown_text.Size = UDim2.fromScale(0.75, 0.85);
 			dropdown_text.Visible = true;
 			dropdown_text.Font = Enum.Font.Gotham;
 			dropdown_text.Text = " ...";
@@ -1556,27 +1580,28 @@ function ui_lib:NewGui()
 			dropdown_icon.Active = false;
 			dropdown_icon.BackgroundTransparency = 1;
 			dropdown_icon.Name = "dropdown_icon";
-			dropdown_icon.Position = UDim2.new(0.8, 0, 0.15, 0);
-			dropdown_icon.Size = UDim2.new(0.15, 0, 0.75, 0);
+			dropdown_icon.Position = UDim2.fromScale(0.8, 0.15);
+			dropdown_icon.Size = UDim2.fromScale(0.15, 0.75);
 			dropdown_icon.Visible = true;
 			dropdown_icon.ZIndex = 2;
 			dropdown_icon.Image = "http://www.roblox.com/asset/?id=14596383084";
 			dropdown_icon.ImageColor3 = Color3.fromRGB(255, 255, 255);
 			dropdown_icon.Parent = dropdown_btn;
 
+			local canvas_size = (#items + 1) / 1.5;
 			local dropdown_frame = Instance.new("ScrollingFrame");
 			dropdown_frame.BackgroundColor3 = Color3.fromRGB(44, 44, 44);
 			dropdown_frame.BorderSizePixel = 0;
 			dropdown_frame.BackgroundTransparency = 0;
 			dropdown_frame.BorderColor3 = Color3.fromRGB(35, 35, 35);
-			dropdown_frame.Position = UDim2.new(0, 0, 1.05, 0);
-			dropdown_frame.Size = UDim2.new(1, 0, 0, 0);
+			dropdown_frame.Position = UDim2.fromScale(0, 1);
+			dropdown_frame.Size = UDim2.fromScale(1, 0);
 			dropdown_frame.ScrollingDirection = Enum.ScrollingDirection.Y;
-			dropdown_frame.ScrollBarThickness = 5;
+			dropdown_frame.ScrollBarThickness = 4;
 			dropdown_frame.Visible = false;
 			dropdown_frame.Name = "Dropdown";
 			dropdown_frame.ZIndex = 1;
-			dropdown_frame.CanvasSize = UDim2.new(0, 0, 10, 0);
+			dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 			dropdown_frame.Parent = dropdown_btn;
 
 			local ui_list_layout = Instance.new("UIListLayout");
@@ -1586,11 +1611,8 @@ function ui_lib:NewGui()
 			ui_list_layout.VerticalAlignment = Enum.VerticalAlignment.Top;
 			ui_list_layout.Padding = UDim.new(0, 3);
 			ui_list_layout.Parent = dropdown_frame;
-			
-			if #items >= 10 then
-				dropdown_frame.CanvasSize = UDim2.new(0, 0, 10 + (#items * 0.01), 0);
-			end
-			
+
+			local element_size = 0.625;
 			for i,v in pairs(items) do
 				if items ~= nil and type(items) == "table" then	
 					local option_btn = Instance.new("TextButton");
@@ -1599,20 +1621,13 @@ function ui_lib:NewGui()
 					option_btn.BorderColor3 = Color3.fromRGB(30, 30, 30);
 					option_btn.BorderSizePixel = 1;
 					option_btn.Name = tostring(v)
-					option_btn.Font = Enum.Font.Gotham;
+					option_btn.FontFace = Font.fromId(11598121416, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 					option_btn.Text = tostring(v);
 					option_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 					option_btn.TextScaled = true;
 					option_btn.AutoButtonColor = false;
+					option_btn.Size = UDim2.fromScale(1, element_size / canvas_size);
 					option_btn.Parent = dropdown_frame;
-
-					if #items < 20 then
-						option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.002)), 0);
-					elseif #items >= 20 then
-						option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.0025)), 0);
-					else
-						option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.0015)), 0);
-					end
 
 					option_btn.MouseButton1Click:Connect(function()
 						if table.find(current_items, option_btn.Name) then
@@ -1644,7 +1659,7 @@ function ui_lib:NewGui()
 								if dr1:IsA("Frame") and dr1 ~= dropdown_btn then
 									if dr1:FindFirstChild("dropdown_btn") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown") ~= nil and dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible == true then
 										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("dropdown_icon").Rotation = 0;
-										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.new(1, 0, 0, 0);
+										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Size = UDim2.fromScale(1, 0);
 										dr1:FindFirstChild("dropdown_btn"):FindFirstChild("Dropdown").Visible = false;
 										dr1.ZIndex = 1;
 									end
@@ -1676,9 +1691,8 @@ function ui_lib:NewGui()
 					end
 					
 					current_items = {};
-					if #items >= 10 then
-						dropdown_frame.CanvasSize = UDim2.new(0, 0, 10 + (#items * 0.01), 0);
-					end
+					local canvas_size = (#items + 1) / 1.5;
+					dropdown_frame.CanvasSize = UDim2.fromScale(0, canvas_size);
 					
 					for i,v in pairs(items) do
 						local option_btn = Instance.new("TextButton");
@@ -1687,19 +1701,12 @@ function ui_lib:NewGui()
 						option_btn.BorderColor3 = Color3.fromRGB(30, 30, 30);
 						option_btn.BorderSizePixel = 1;
 						option_btn.Name = tostring(v);
-						option_btn.Font = Enum.Font.Gotham;
+						option_btn.FontFace = Font.fromId(11598121416, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 						option_btn.Text = tostring(v);
 						option_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
 						option_btn.TextScaled = true;
+						option_btn.Size = UDim2.fromScale(1, element_size / canvas_size);
 						option_btn.Parent = dropdown_frame;
-
-						if #items < 20 then
-							option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.002)), 0);
-						elseif #items >= 20 then
-							option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.0025)), 0);
-						else
-							option_btn.Size = UDim2.new(1, 0, (0.1 - (#items * 0.0015)), 0);
-						end
 
 						option_btn.MouseButton1Click:Connect(function()
 							if table.find(current_items, option_btn.Name) then
@@ -1748,8 +1755,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame");
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -1772,8 +1779,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.57, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.57, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -1787,9 +1794,9 @@ function ui_lib:NewGui()
 			input_box.BackgroundColor3 = Color3.fromRGB(48, 48, 48);
 			input_box.BackgroundTransparency = 0;
 			input_box.ClearTextOnFocus = false;
-			input_box.Position = UDim2.new(0.625, 0, 0.1, 0);
+			input_box.Position = UDim2.fromScale(0.625, 0.1);
 			input_box.Name = "Input";
-			input_box.Size = UDim2.new(0.35, 0, 0.8, 0);
+			input_box.Size = UDim2.fromScale(0.35, 0.8);
 			input_box.Visible = true;
 			input_box.ShowNativeInput = true;
 			input_box.TextScaled = true;
@@ -1824,8 +1831,8 @@ function ui_lib:NewGui()
 			local tab_btn = Instance.new("Frame");
 			tab_btn.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_btn.Name = tostring(name);
-			tab_btn.Position = UDim2.new(0, 0, 0, 0);
-			tab_btn.Size = UDim2.new(0.965, 0, 0.063, 0);
+			tab_btn.Position = UDim2.fromScale(0, 0);
+			tab_btn.Size = UDim2.fromScale(0.965, 0.063);
 			tab_btn.Transparency = 1;
 			tab_btn.Visible = true;
 			tab_btn.BackgroundTransparency = 0;
@@ -1848,8 +1855,8 @@ function ui_lib:NewGui()
 			local btn_title = Instance.new("TextLabel");
 			btn_title.BackgroundTransparency = 1;
 			btn_title.Name = "Title";
-			btn_title.Size = UDim2.new(0.457, 0, 0.75, 0);
-			btn_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			btn_title.Size = UDim2.fromScale(0.457, 0.75);
+			btn_title.Position = UDim2.fromScale(0.025, 0.15);
 			btn_title.Visible = true;
 			btn_title.Active = false;
 			btn_title.Text = tostring(name);
@@ -1863,8 +1870,8 @@ function ui_lib:NewGui()
 			keybind_btn.BackgroundTransparency = 0;
 			keybind_btn.BackgroundColor3 = Color3.fromRGB(48, 48, 48);
 			keybind_btn.Name = "Keybind";
-			keybind_btn.Position = UDim2.new(0.825, 0, 0.075, 0);
-			keybind_btn.Size = UDim2.new(0.15, 0, 0.85, 0);
+			keybind_btn.Position = UDim2.fromScale(0.825, 0.075);
+			keybind_btn.Size = UDim2.fromScale(0.15, 0.85);
 			keybind_btn.Visible = true;
 			keybind_btn.Text = "None";
 			keybind_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
@@ -1877,8 +1884,8 @@ function ui_lib:NewGui()
 			local keybind_settings = Instance.new("ImageButton");
 			keybind_settings.Active = true;
 			keybind_settings.BackgroundTransparency = 1;
-			keybind_settings.Position = UDim2.new(0.75, 0, 0.15, 0);
-			keybind_settings.Size = UDim2.new(0.05, 0, 0.7, 0);
+			keybind_settings.Position = UDim2.fromScale(0.75, 0.15);
+			keybind_settings.Size = UDim2.fromScale(0.05, 0.7);
 			keybind_settings.Visible = true;
 			keybind_settings.Image = "rbxassetid://1185031129";
 			keybind_settings.ImageColor3 = Color3.fromRGB(255, 255, 255);
@@ -1891,8 +1898,8 @@ function ui_lib:NewGui()
 			keybind_settings_frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 			keybind_settings_frame.BorderSizePixel = 0;
 			keybind_settings_frame.Name = "Settings";
-			keybind_settings_frame.Position = UDim2.new(1.5, 0, 0.5, 0);
-			keybind_settings_frame.Size = UDim2.new(0, 0, 0, 0);
+			keybind_settings_frame.Position = UDim2.fromScale(1.5, 0.5);
+			keybind_settings_frame.Size = UDim2.fromScale(0, 0);
 			keybind_settings_frame.Visible = false;
 			keybind_settings_frame.ZIndex = 1;
 			keybind_settings_frame.Parent = keybind_settings;
@@ -1909,7 +1916,7 @@ function ui_lib:NewGui()
 			on_hold_btn.BackgroundTransparency = 0;
 			on_hold_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 			on_hold_btn.Name = "on_hold";
-			on_hold_btn.Size = UDim2.new(1, 0, 0.3, 0);
+			on_hold_btn.Size = UDim2.fromScale(1, 0.3);
 			on_hold_btn.Visible = true;
 			on_hold_btn.Text = "on hold";
 			on_hold_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
@@ -1923,7 +1930,7 @@ function ui_lib:NewGui()
 			on_toggle_btn.BackgroundTransparency = 0;
 			on_toggle_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 			on_toggle_btn.Name = "on_toggle";
-			on_toggle_btn.Size = UDim2.new(1, 0, 0.3, 0);
+			on_toggle_btn.Size = UDim2.fromScale(1, 0.3);
 			on_toggle_btn.Visible = true;
 			on_toggle_btn.Text = "on toggle";
 			on_toggle_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
@@ -1937,7 +1944,7 @@ function ui_lib:NewGui()
 			always_on_btn.BackgroundTransparency = 0;
 			always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 			always_on_btn.Name = "always_on";
-			always_on_btn.Size = UDim2.new(1, 0, 0.3, 0);
+			always_on_btn.Size = UDim2.fromScale(1, 0.3);
 			always_on_btn.Visible = true;
 			always_on_btn.Text = "always on";
 			always_on_btn.TextColor3 = Color3.fromRGB(255, 255, 255);
@@ -2050,10 +2057,10 @@ function ui_lib:NewGui()
 								if ks1:IsA("Frame") and ks1 ~= tab_btn then
 									if ks1:FindFirstChild("keybind_settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings") ~= nil and ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible == true then
 										if frames == frame then
-											keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+											keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.fromScale(1.5, 0.5), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 										else
-											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.new(0, 0, 0, 0);
-											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.new(1.5, 0, 0.5, 0);
+											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Size = UDim2.fromScale(0, 0);
+											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Position = UDim2.fromScale(1.5, 0.5);
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").Visible = false;
 											ks1:FindFirstChild("keybind_settings"):FindFirstChild("Settings").ZIndex = 1;
 										end
@@ -2065,9 +2072,9 @@ function ui_lib:NewGui()
 					
 					keybind_settings_frame.ZIndex = 5;
 					keybind_settings_frame.Visible = true;
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(3.5, 0, 2.25, 0), UDim2.new(1.5, 0, -0.6, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(3.5, 2.25), UDim2.fromScale(1.5, -0.6), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, nil)
 				elseif keybind_settings_frame.Visible == true then
-					keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+					keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.fromScale(1.5, 0.5), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				end
 			end)
 			
@@ -2080,7 +2087,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_hold_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.fromScale(1.5, 0.5), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				event_con1 = game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
 					if not gui.Parent or gui == nil then
@@ -2120,7 +2127,7 @@ function ui_lib:NewGui()
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.fromScale(1.5, 0.5), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.ZIndex = 1; keybind_settings_frame.Visible = false; end)
 				
 				local toggled = false;
 				
@@ -2149,7 +2156,7 @@ function ui_lib:NewGui()
 				on_toggle_btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45);
 				always_on_btn.BackgroundColor3 = Color3.fromRGB(61, 61, 61);
 				
-				keybind_settings_frame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(1.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.Visible = false; end)
+				keybind_settings_frame:TweenSizeAndPosition(UDim2.fromScale(0, 0), UDim2.fromScale(1.5, 0.5), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 0.5, true, function() keybind_settings_frame.Visible = false; end)
 
 				task.spawn(action, true);
 			end)
@@ -2161,8 +2168,8 @@ function ui_lib:NewGui()
 			local tab_label = Instance.new("Frame");
 			tab_label.BackgroundColor3 = Color3.fromRGB(17, 17, 17);
 			tab_label.Name = tostring(name);
-			tab_label.Position = UDim2.new(0.016, 0, 0, 0);
-			tab_label.Size = UDim2.new(0.935, 0, 0.063, 0);
+			tab_label.Position = UDim2.fromScale(0.016, 0);
+			tab_label.Size = UDim2.fromScale(0.935, 0.063);
 			tab_label.Transparency = 1;
 			tab_label.Visible = true;
 			tab_label.BackgroundTransparency = 0;
@@ -2173,8 +2180,8 @@ function ui_lib:NewGui()
 			local label_title = Instance.new("TextLabel");
 			label_title.BackgroundTransparency = 1;
 			label_title.Name = "label";
-			label_title.Size = UDim2.new(0.95, 0, 0.75, 0);
-			label_title.Position = UDim2.new(0.025, 0, 0.15, 0);
+			label_title.Size = UDim2.fromScale(0.95, 0.75);
+			label_title.Position = UDim2.fromScale(0.025, 0.15);
 			label_title.Visible = true;
 			label_title.Active = false;
 			label_title.Text = tostring(text);
