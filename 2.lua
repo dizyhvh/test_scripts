@@ -1174,12 +1174,16 @@ function ui_lib:NewGui()
 			text_box.TextScaled = true;
 			text_box.Parent = tab_btn;
 
-			local function snap(n, f)
+			--[[local function snap(n, f)
 				if f == 0 then
 					return n;
 				end
 
-				return math.floor(n/f+(n < 0 and -0.5 or 0.5))*f;
+				return math.floor(n/f+0.5)*f;
+			end]]
+
+			local function snap(v, s)
+				return v - (v % s);
 			end
 			
 			text_box.Changed:Connect(function(p)
@@ -1223,15 +1227,12 @@ function ui_lib:NewGui()
 				holding_slider = true;
 				slider_connection = game:GetService("RunService").RenderStepped:Connect(function()
 					if holding_slider then
-						local position = snap((game:GetService("UserInputService"):GetMouseLocation().X-slider_frame.AbsolutePosition.X)/slider_frame.AbsoluteSize.X, 0);
-						local percentage = math.clamp(position, 0, 1);
+						local percentage = math.round(snap(math.clamp((game:GetService("UserInputService"):GetMouseLocation().X - slider_frame.AbsolutePosition.X)/slider_frame.AbsoluteSize.X, 0, 1), 0.02)*100)/100
 						slider_handler.Position = UDim2.new(percentage, 0, slider_handler.Position.Y.Scale, slider_handler.Position.Y.Offset);
-						
-						local slider_value;
-						if precise then
-							slider_value = 1*math.floor(slider_handler.Position.X.Scale*max);
-						else
-							slider_value = math.floor((1*(slider_handler.Position.X.Scale*max) * 100)) / 100;
+
+						local slider_value = percentage * (max - min) + min;
+						if not precise then
+							slider_value = math.floor(slider_value + 0.5);
 						end
 						
 						text_box.TextEditable = false;
